@@ -1,0 +1,25 @@
+{% extends "clientes/base_clientes.html" %}
+{% load static %}
+
+{% block contenido %}
+
+	<table>
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Descripcion</th>
+				<th>Precio</th>	
+			</tr>
+		</thead>
+		<tbody>
+			{% for servicio in servicios %}
+			<tr>
+				<th>{{servicio.nombre}}</th>
+				<th>{{servicio.descripcion}}</th>
+				<th>{{servicio.precio}}</th>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	
+{% endblock %}
