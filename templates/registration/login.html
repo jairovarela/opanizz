@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+
+<div class="row">
+	<div class="container">
+		<h2 align="center" style="font-family: 'Source Sans Pro', sans-serif; color: #2196F3">Iniciar Sesion</h2>
+		<center>
+			<form class="col m12" method="post" action=".">
+			  {% csrf_token %} 
+			  {{ form.as_p }}
+				<button class="btn waves-effect waves-light red darken-1" type="submit">{% trans 'Iniciar sesion' %}
+				        	<i class="mdi-content-send right white-text"></i>
+				</button>
+				<input type="hidden" name="next" value="{{ next }}" />
+			</form>	
+		</center>
+	</div>
+</div>
+<br>
+<p align="center">{% trans "Has olvidado tu contrasena" %}? <a href="{% url 'auth_password_reset' %}">{% trans "Restablecer" %}</a>!</p>
+<p align="center">{% trans "No tienes cuenta" %}? <a href="{% url 'registration_register' %}">{% trans "Registrarte" %}</a>!</p><br>
+{% endblock %}

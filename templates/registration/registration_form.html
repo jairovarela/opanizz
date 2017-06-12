@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+
+<div class="row">
+	<div class="container">
+		<h2 align="center" style="font-family: 'Source Sans Pro', sans-serif; color: #2196F3">Registrate</h2>
+		<form class="col s12" method="post" action=".">
+  			{% csrf_token %}
+  			{{ form.as_p }}
+			<button class="btn waves-effect waves-light red darken-1" type="submit">{% trans 'Registrar' %}
+	        	<i class="mdi-content-send right white-text"></i>
+	    	</button>
+		</form>
+	</div>
+</div>
+
+{% endblock %}
