@@ -1,8 +1,39 @@
+from django.views import generic
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 
-# Create your views here.
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+
+from administracion.models import Servicios
+
+
+class ClienteServiciosView(LoginRequiredMixin, generic.View):
+    template_name = 'clientes/servicios.html'
+    def get(self, request, *args, **kwargs):
+        context = {
+            'servicios': Servicios.objects.all()
+        }
+        return render(request, self.template_name, context)
+
+
+    def post(self, request, *args, **kwargs):
+    	import ipdb; ipdb.set_trace()
+    	data = request.POST
+        context = {
+            'servicios': Servicios.objects.all()
+        }
+        return render(request, self.template_name, context)
+
+
+
+
+
+
+
+
+
+
 
 
 def handler404(request):
@@ -13,8 +44,9 @@ def handler404(request):
 def inicio(request):
 	return render(request, "inicio.html", {})
 
+
 def perfil(request):
-	return render(request, "perfil.html",{})
+	return render(request, "clientes/perfil.html", {})
 
 def datos(request):
-	return render(request, "datos.html",{})
+	return render(request, "clientes/datos.html", {})

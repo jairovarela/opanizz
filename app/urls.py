@@ -17,6 +17,7 @@ from django.conf.urls import include, url
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
+from clientes.views import ClienteServiciosView
 from clientes import views
 
 urlpatterns = [
@@ -24,8 +25,9 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^admin_tools/', include('admin_tools.urls')),
-    url(r'^accounts/profile/', views.perfil, name = 'perfil'),
-    url(r'^accounts/profile/datos/', views.datos, name = 'datos'),
+    url(r'^accounts/servicios/$', ClienteServiciosView.as_view(), name='clientes_servicios'),
+    url(r'^accounts/profile/$', views.perfil, name='perfil'),
+    url(r'^accounts/profile/datos/$', views.datos, name='datos'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
