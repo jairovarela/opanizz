@@ -35,7 +35,7 @@ class Contratado(models.Model):
 	numero = models.IntegerField(null=True, blank=True)
 	domicilio_laboral = models.CharField(max_length=200, blank=True)
 	punto_referencia = models.CharField(max_length=250, blank=True, verbose_name='Punto de Referencia de busqueda')
-	servicio = models.ForeignKey(Servicios, null=True, verbose_name='Servicio a Contratar')
+	servicio = models.ManyToManyField(Servicios, verbose_name='Servicio a Contratar')
 	meses = models.BooleanField(default=False, verbose_name='Contrato por 6 meses', help_text='Marque si el cliente desea contratacion semestral')
 	ano = models.BooleanField(default=False, verbose_name='Contrato por 1 ano', help_text='Marque si el cliente desea contratacion anual')
 
