@@ -2,24 +2,25 @@
 {% load static %}
 
 {% block contenido %}
-
-	<table>
-		<thead>
-			<tr>
-				<th>Nombre</th>
-				<th>Descripcion</th>
-				<th>Precio</th>	
-			</tr>
-		</thead>
-		<tbody>
-			{% for servicio in servicios %}
-			<tr>
-				<th>{{servicio.nombre}}</th>
-				<th>{{servicio.descripcion}}</th>
-				<th>{{servicio.precio}}</th>
-			</tr>
-			{% endfor %}
-		</tbody>
-	</table>
-	
+	<h2>NUESTROS SERVICIOS DISPONIBLES</h2>
+	<br>
+	<br>
+	{% for servicio in servicios %}
+		<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <div class="card">
+                <div class="header bg-cyan">
+                    <h2>
+                        {{servicio.nombre}} <small>Precio: {{servicio.precio}}</small>
+                    </h2>
+                </div>
+                <div class="body">
+                   	{{servicio.descripcion}}
+                </div>
+            </div>
+        </div>
+	{% endfor %}
+	<br>	
+	<div>
+		<button class="btn btn-primary waves-effect" href="#">CONTRATAR SERVICIOS</button>
+	</div>
 {% endblock %}
