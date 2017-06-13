@@ -1,6 +1,9 @@
 from django.contrib import admin
 from models import Servicios
 
-admin.site.register(Servicios)
+class ServicioAdmin(admin.ModelAdmin):
+	list_display = ['nombre', 'descripcion', 'precio', 'contrato']
+
+admin.site.register(Servicios, ServicioAdmin)
 
 # Register your models here.
