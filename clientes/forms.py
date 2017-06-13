@@ -27,7 +27,6 @@ class PotencialesForm(forms.ModelForm):
 		model = Potenciales
 		exclude = []
 		fields =[
-			"usuario",
 			"nombre",
 			"apellido",
 			"medio_contactado",

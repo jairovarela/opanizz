@@ -51,5 +51,6 @@ def datos(request):
     form = PotencialesForm(request.POST or None)
     if form.is_valid():
         instance = form.save(commit=False)
+        instance.usuario = request.user    
         instance.save()
     return render(request, "clientes/datos.html", {"form":form})

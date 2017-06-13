@@ -330,7 +330,7 @@
                         <img src="../../images/user.png" width="48" height="48" alt="User" />
                     </div>
                     <div class="info-container">
-                        <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ user.username}}</div>
+                        <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% if request.user.first_name %}{{user.first_name}}{% else %}{{ user.username }}{% endif %}</div>
                         <div class="email">{{ user.email }}</div>
                         <div class="btn-group user-helper-dropdown">
                             <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>

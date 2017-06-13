@@ -4,7 +4,7 @@ from django.db import models
 from generalidades.models import MedioContacto, MediosActividad, ZonasValencia
 
 class Potenciales(models.Model):
-	usuario = models.ForeignKey(User, verbose_name='Tu usuario')
+	usuario = models.OneToOneField(User, verbose_name='Tu usuario', unique=True)
 	nombre = models.CharField(max_length = 255, verbose_name = 'Nombres', help_text = 'Nombres Completos')
 	apellido = models.CharField(max_length = 255, verbose_name = 'Apellidos', help_text = 'Apellidos Completos')
 	medio_contactado = models.ForeignKey(MedioContacto, null=True, blank=True)
