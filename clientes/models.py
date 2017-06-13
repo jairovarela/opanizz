@@ -24,7 +24,7 @@ class Potenciales(models.Model):
 		return '%s %s' % (self.nombre, self.apellido)
 
 class Actividad(models.Model):
-	cliente_registro = models.ForeignKey(Potenciales, verbose_name='Cleinte Potencial')
+	cliente_registro = models.ForeignKey(Potenciales, verbose_name='Cliente Potencial')
 	fecha_contacto = models.DateTimeField(null=True)
 	medio_contactado = models.ForeignKey(MediosActividad, null=True, blank=True)
 	actividad_registrada = models.CharField(max_length=255)
