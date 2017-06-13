@@ -5,7 +5,7 @@
 	<h2>NUESTROS SERVICIOS DISPONIBLES</h2>
 	<br>
 	<br>
-    <form action="servicios_submit" method="post" accept-charset="utf-8">
+    <form action="" method="POST">{% csrf_token %}
         {% for servicio in servicios %}
     		<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="card">
@@ -19,15 +19,13 @@
                         <br>
                         <br>
                         <div class="switch">
-                            <label><input type="checkbox"><span class="lever switch-col-cyan"></span>Contratar</label>
+                            <div>
+                                <button class="btn btn-primary waves-effect" type="submit">CONTRATAR SERVICIO</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-    	{% endfor %}
-    	<br>	
-    	<div>
-    		<button class="btn btn-primary waves-effect" type="submit">CONTRATAR SERVICIOS</button>
-    	</div>
+    	{% endfor %}	
     </form>
 {% endblock %}
