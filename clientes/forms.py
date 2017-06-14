@@ -1,11 +1,11 @@
 from django import forms 
 from django.forms import ModelForm, CheckboxInput
 from models import Potenciales, Actividad
-from django import forms 
-from django.forms import ModelForm, CheckboxInput
+from django import forms
+from django.forms import ModelForm, Textarea
+from django.forms.widgets import CheckboxInput
 from django_select2.forms import Select2Widget
 from suit.widgets import SuitDateWidget, AutosizedTextarea, SuitTimeWidget, SuitSplitDateTimeWidget
-
 
 # FORMULARIOS MODIFICADOS DE LOS MODELOS 
 
@@ -22,23 +22,22 @@ class ActividadSelect2WidgetForm(forms.ModelForm):
 		'volver_contactar': CheckboxInput,
 		}
 
-class PotencialesForm(forms.ModelForm):
+class PotencialesForm(ModelForm):
 	class Meta:
 		model = Potenciales
-		exclude = []
 		fields =[
-			"nombre",
-			"apellido",
-			"medio_contactado",
-			"celular",
-			"telefono_h",
-			"personas",
-			"cantidad_p",
-			"adultos",
-			"valencia",
-			"zona"
+		    'nombre',
+			'apellido',
+			'medio_contactado',
+			'celular',
+			'telefono_h',
+			'personas',
+			'cantidad_p',
+			'adultos',
+			'valencia',
+			'zona'
 		]
 		widgets = {
-		'adultos': CheckboxInput
+			'adultos': CheckboxInput(attrs={'class':'chk-col-cyan'})
 		}
 
