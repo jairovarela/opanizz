@@ -29,7 +29,7 @@ class CustomMenu(Menu):
                     items.MenuItem('Servicios', '/admin/administracion/servicios/'),
                     items.MenuItem('Facturas', '/admin/factura/',
                         children=[
-                            items.MenuItem('Crear Factura', '/admin/factura/factura/add/7'),
+                            items.MenuItem('Crear Factura', '/admin/factura/factura/add/'),
                         ]
                     ),
                 ]
