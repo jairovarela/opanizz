@@ -20,9 +20,6 @@
 
         <!--  CSS for Demo Purpose, don't include it in your project     -->
         <link href="{% static 'templates/assets/css/demo.css' %}" rel="stylesheet" />
-        <link href="{% static 'templates/assets/css/bootstrap.css' %}" rel="stylesheet" />
-        <link href="{% static 'templates/assets/css/rotating-card.css' %}" rel="stylesheet" />
-        <link href="http://netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 
         <!--     Fonts and icons     -->
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
@@ -52,13 +49,13 @@
                                 <p>Inicio</p>
                             </a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="/accounts/profile/user/">
                                 <i class="material-icons">person</i>
                                 <p>Mi Perfil</p>
                             </a>
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="/accounts/servicios/">
                                 <i class="material-icons">content_paste</i>
                                 <p>Lista de Servicios</p>
@@ -95,7 +92,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="#">Lista de Servicios</a>
+                            <a class="navbar-brand" href="#">Mi Perfil</a>
                         </div>
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav navbar-right">
@@ -145,83 +142,116 @@
                 <div class="content">
                     <div class="container-fluid">
                         <div class="row">
-
-                            <div class="content">
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="card">
-                                                <div class="card-header" data-background-color="blue">
-                                                    <h5 class="title">Lista de Servicios</h5>
-                                                    <br>
-                                                    <p class="category">Toda una Gama de servicios disponibles para ti</p>
+                            <div class="col-md-8">
+                                <div class="card">
+                                    <div class="card-header" data-background-color="blue">
+                                        <h4 class="title">Editar Perfil</h4>
+                                        <p class="category">Modifica tus Datos de Perfil</p>
+                                    </div>
+                                    <div class="card-content">
+                                        <form>
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Company (disabled)</label>
+                                                        <input type="text" class="form-control" disabled>
+                                                    </div>
                                                 </div>
-                                                <div class="card-content table-responsive">
-                                                    <form action="" method="POST" accept-charset="utf-8">{% csrf_token %}
-                                                       {% for servicio in servicios  %}
-                                                            <div class="col-md-4 col-sm-6">
-                                                             <div class="card-container">
-                                                                <div class="card">
-                                                                    <div class="front">
-                                                                        <div class="cover">
-                                                                            <img src="{% static 'templates/assets/img/cover.png' %}"/>
-                                                                        </div>
-                                                                        <div class="user">
-                                                                            <img class="img-circle" src="{% static 'templates/inicio/img/opaniz.png' %}"/>
-                                                                        </div>
-                                                                        <div class="content">
-                                                                            <div class="main">
-                                                                                <h3 class="name">{{servicio.nombre}}</h3>
-                                                                                <p class="profession">El mejor servicio a tu alcance</p>
-                                                                                <p class="text-center">"Obtenlo inmediatamente sin ningun problema en cualquier momento"</p>
-                                                                                <h3 class="name">BsF: {{servicio.precio}}</h3>
-                                                                            </div>
-                                                                            <div class="footer">
-                                                                                <button class="btn btn-simple" onclick="rotateCard(this)">
-                                                                                    <i class="fa fa-mail-forward"></i> VER MAS
-                                                                                </button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div> <!-- end front panel -->
-                                                                    <div class="back">
-                                                                        <div class="header">
-                                                                            <h5 class="motto">"Completamente accesible, facil y rapido de usar!"</h5>
-                                                                        </div>
-                                                                        <div class="content">
-                                                                            <div class="main">
-                                                                                <h4 class="text-center">DESCRIPCION</h4>
-                                                                                <p class="text-center">{{servicio.descripcion}}</p>
-
-                                                                                <div class="stats-container">
-                                                                                    <button class="btn btn-info waves-effect" type="submit" href='/accounts/profile/contratos/'>CONTRATAR SERVICIO</button>
-                                                                                </div>
-
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="footer">
-                                                                            <button class="btn btn-simple" rel="tooltip" title="Flip Card" onclick="rotateCard(this)">
-                                                                                <i class="fa fa-reply"></i> ATRAS
-                                                                            </button>
-                                                                            <div class="social-links text-center">
-                                                                                <a href="http://creative-tim.com" class="facebook"><i class="fa fa-facebook fa-fw"></i></a>
-                                                                                <a href="http://creative-tim.com" class="google"><i class="fa fa-google-plus fa-fw"></i></a>
-                                                                                <a href="http://creative-tim.com" class="twitter"><i class="fa fa-twitter fa-fw"></i></a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div> <!-- end back panel -->
-                                                                </div> <!-- end card -->
-                                                            </div> <!-- end card-container -->
-                                                        </div>
-                                                        {% endfor %}
-                                                    </form>
-                                                    
+                                                <div class="col-md-3">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Username</label>
+                                                        <input type="text" class="form-control" >
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Email address</label>
+                                                        <input type="email" class="form-control" >
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Fist Name</label>
+                                                        <input type="text" class="form-control" >
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Last Name</label>
+                                                        <input type="text" class="form-control" >
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Adress</label>
+                                                        <input type="text" class="form-control" >
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">City</label>
+                                                        <input type="text" class="form-control" >
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Country</label>
+                                                        <input type="text" class="form-control" >
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Postal Code</label>
+                                                        <input type="text" class="form-control" >
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>About Me</label>
+                                                        <div class="form-group label-floating">
+                                                            <label class="control-label"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
+                                                            <textarea class="form-control" rows="5"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <button type="submit" class="btn btn-info pull-right">Actualizar Perfil</button>
+                                            <div class="clearfix"></div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-md-4">
+                                <div class="card card-profile">
+                                    <div class="card-avatar">
+                                        <a href="#pablo">
+                                            <img class="img" src="{% static 'templates/inicio/img/opaniz.png' %}" height="300" width="300" />
+                                        </a>
+                                    </div>
 
+                                    <div class="content">
+                                        <h6 class="category text-gray">Agencia de Seguros</h6>
+                                        <h4 class="card-title">Inversiones Opaniz</h4>
+                                        <p class="card-content">
+                                            Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                                        </p>
+                                        <a href="#pablo" class="btn btn-info btn-round">Follow</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
