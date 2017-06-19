@@ -38,6 +38,8 @@ class PotencialesForm(ModelForm):
 			'zona'
 		]
 		widgets = {
-			'adultos': CheckboxInput(attrs={'class':'checkbox'})
+			'adultos': CheckboxInput(attrs={'class':'checkbox'}),
+			'zona': Select2Widget(attrs={'class':'django-select2 form-control'}),
+			'adultos': CheckboxInput(attrs={'class':'choice', 'icon':'fa fa-laptop'})
 		}
 
