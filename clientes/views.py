@@ -5,6 +5,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from administracion.models import Servicios
 from forms import PotencialesForm
+from contratos.forms import ContratosForm
 
 
 class ClienteServiciosView(LoginRequiredMixin, generic.View):
@@ -47,6 +48,9 @@ def inicio(request):
 def perfil(request):
 	return render(request, "clientes/perfil.html", {})
 
+def usuario(request):
+    return render(request, "clientes/user.html", {})
+
 def datos(request):
     form = PotencialesForm(request.POST or None)
     if form.is_valid():
@@ -54,6 +58,13 @@ def datos(request):
         instance.usuario = request.user    
         instance.save()
     return render(request, "clientes/datos.html", {"form":form})
+
+def contrato(request):
+    form = ContratosForm(request.POST or None)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+    return render(request, "clientes/contrato.html", {"form":form})
 
 def prueba(request):
     form = PotencialesForm(request.POST or None)
