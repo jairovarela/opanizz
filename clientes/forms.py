@@ -38,6 +38,6 @@ class PotencialesForm(ModelForm):
 			'zona'
 		]
 		widgets = {
-			'adultos': CheckboxInput(attrs={'class':'chk-col-cyan'})
+			'adultos': CheckboxInput(attrs={'class':'checkbox'})
 		}
 
