@@ -27,9 +27,10 @@ urlpatterns = [
     url(r'^admin_tools/', include('admin_tools.urls')),
     url(r'^accounts/servicios/$', ClienteServiciosView.as_view(), name='clientes_servicios'),
     url(r'^accounts/profile/$', views.perfil, name='perfil'),
-    url(r'^accounts/profile/user/$', views.usuario, name='usuario'),
-    url(r'^accounts/profile/datos/$', views.datos, name='datos'),
-    url(r'^accounts/profile/contratos/$', views.contrato, name='contrato'),
+    url(r'^accounts/user/$', views.usuario, name='usuario'),
+    url(r'^accounts/datos/$', views.datos, name='datos'),
+    url(r'^accounts/contratos/$', views.contrato, name='contrato'),
+    url(r'^accounts/contratados/$', views.contratados, name='contratados'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
