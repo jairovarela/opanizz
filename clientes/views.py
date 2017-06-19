@@ -66,10 +66,5 @@ def contrato(request):
         instance.save()
     return render(request, "clientes/contrato.html", {"form":form})
 
-def prueba(request):
-    form = PotencialesForm(request.POST or None)
-    if form.is_valid():
-        instance = form.save(commit=False)
-        instance.usuario = request.user    
-        instance.save()
-    return render(request, "clientes/prueba.html", {"form":form})
+def contratados(request):
+    return render(request, "clientes/contrato_hecho.html", {})
