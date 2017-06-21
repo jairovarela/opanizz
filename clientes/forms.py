@@ -3,10 +3,9 @@ from django.forms import ModelForm, CheckboxInput
 from models import Potenciales, Actividad
 from django import forms
 from django.forms import ModelForm, Textarea
-from django.forms.widgets import CheckboxInput
+from django.forms.widgets import CheckboxInput, TextInput, NumberInput
 from django_select2.forms import Select2Widget
 from suit.widgets import SuitDateWidget, AutosizedTextarea, SuitTimeWidget, SuitSplitDateTimeWidget
-
 # FORMULARIOS MODIFICADOS DE LOS MODELOS 
 
 class ActividadSelect2WidgetForm(forms.ModelForm):
@@ -38,8 +37,11 @@ class PotencialesForm(ModelForm):
 			'zona'
 		]
 		widgets = {
-			'adultos': CheckboxInput(attrs={'class':'checkbox'}),
 			'zona': Select2Widget(attrs={'class':'django-select2 form-control'}),
-			'adultos': CheckboxInput(attrs={'class':'choice', 'icon':'fa fa-laptop'})
+			'adultos': CheckboxInput(attrs={'class':'choice', 'icon':'fa fa-laptop'}),
+			'nombre': TextInput(attrs={'class':'form-control'}),
+			'apellido': TextInput(attrs={'class':'form-control'}),
+			'celular': NumberInput(attrs={'class':'form-control'}),
+			'telefono_h': NumberInput(attrs={'class': 'form-control'}),
 		}
 
