@@ -14,6 +14,45 @@ def incremental():
 		return 'OPA-' + str(numcontrato)
 
 
+
+
+Salud = (
+    ('Buena', 'Buena'),
+    ('Regular', 'Regular'),
+    ('Mala', 'Mala'),
+)
+
+Respiratorio = (
+				('Bronquitis', 'Bronquietes Cronica'),
+				('Tuberculosis', 'Tuberculosis'),
+				('Asma', 'Asma'),
+				('Otras', 'Otras' )
+				)
+Circulatorio = (
+				('Trastorno en la presion arterial','Trastorno en la presion arterial '),
+				('Alteraciones cardiacas','Alteraciones cardiacas'),
+				('Angina de pecho','Angina de pecho '),
+				('Infarto de miocardio','Infarto de miocardio'),
+				('Otras enfermedades relacionados','Otras enfermedades relacionados:')
+				)
+Digestivo = (
+			('Enfermedades del higado','Enfermedades del higado'),
+			('Ulcera gastroduodenal','Ulcera gastroduodenal'),
+			('Dispepcia','Dispepcia'),
+			('Gastritis','Gastritis'),
+			('Otras enfermedades','Otras enfermedades'),
+			)
+Otras = (
+		('Reumatismo','Reumatismo'),
+		('Artritis','Artritis'),
+		('Hemorragias de cualquier indole','Hemorragias de cualquier indole'),
+		('Perdida del conocimiento','Perdida del conocimiento'),
+		('Enfermedades en los huesos','Enfermedades en los huesos'),
+		('Convulsiones','Convulsiones'),
+		('Paralisis','Paralisis'),
+
+		)
+
 class Contratado(models.Model):
 	numcontrato = models.CharField(max_length=20, default=incremental, editable=False)
 	cliente = models.ForeignKey(Potenciales)
@@ -36,8 +75,26 @@ class Contratado(models.Model):
 	domicilio_laboral = models.CharField(max_length=200, blank=True)
 	punto_referencia = models.CharField(max_length=250, blank=True, verbose_name='Punto de Referencia de busqueda')
 	servicio = models.ForeignKey(Servicios, null=True, verbose_name='Servicio a Contratar')
-	meses = models.BooleanField(default=False, verbose_name='Contrato por 6 meses', help_text='Marque si el cliente desea contratacion semestral')
-	ano = models.BooleanField(default=False, verbose_name='Contrato por 1 ano', help_text='Marque si el cliente desea contratacion anual')
+	cancer = models.CharField(max_length=20, blank=True, verbose_name='Cancer')
+	diabetes = models.CharField(max_length=20, blank=True, verbose_name='Diabetes')
+	enfermedad_corazon = models.CharField(max_length=20, blank=True, verbose_name='Enfermedades del Corazon')
+	presion_arterial = models.CharField(max_length=20, blank=True, verbose_name='Presion Arterial Alta')
+	enfermedad_renal = models.CharField(max_length=20, blank=True, verbose_name='Enfermedades Renales')
+	enfermendad_mental = models.CharField(max_length=20, blank=True, verbose_name='Enfermedades Mentales')
+	enfermedades_importantes = models.CharField(max_length=250, blank=True, verbose_name='Otras Importantes')
+	salud = models.CharField(max_length=7, choices=Salud, verbose_name='Estado de Salud', blank=True)
+	peso = models.CharField(max_length=4, blank=True, verbose_name='Indique su peso')
+	estatura = models.CharField(max_length=5, blank=True, verbose_name='Indique su Estatura')
+	enfermedad_respiratoria = models.CharField(max_length=50, blank=True, choices=Respiratorio, verbose_name='Enfermedades Respiratorias', help_text='Indique si Padece')
+	indique_respiratoria = models.CharField(max_length=150, blank=True, verbose_name='Indique', help_text='Especifique enfermedad Respirarotia')
+	enfermedad_digestivo = models.CharField(max_length=50, blank=True, choices=Digestivo, verbose_name='Enfermedades Digestivas', help_text='Indique si Padece')
+	indique_digestivo = models.CharField(max_length=150, blank=True, verbose_name='Indique', help_text='Especifique Enfermedad Digestiva')
+	enfermedad_circulatorio = models.CharField(max_length=50, blank=True, choices=Circulatorio, verbose_name='Enfermedades Circulatorias', help_text='Indique si Padece')
+	indique_circulatorio = models.CharField(max_length=150, blank=True, verbose_name='Indique', help_text='Especifique Enfermedad Circulatoria')
+	otras_enfermedades = models.CharField(max_length=50, blank=True, choices=Otras, verbose_name='Otras Enfermedades', help_text='Indique si Padece')
+	indique_otras = models.CharField(max_length=150, verbose_name='Indique', help_text='Especifique la enfermedad')
+	
+
 
 	class Meta:
 		verbose_name = 'Cliente a Contratar'

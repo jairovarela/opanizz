@@ -24,7 +24,7 @@ class ContratadoSelect2widgetForm(forms.ModelForm):
 		'cliente': Select2Widget,
 		'fecha_n': SuitDateWidget,
 		'direccion': AutosizedTextarea(attrs={'rows': 6, 'class': 'input-xlarge'}),
-		#'punto_referencia': AutosizedTextarea(attrs={'rows': 6, 'class': 'input-'}),
+		'punto_referencia': AutosizedTextarea(attrs={'rows': 6, 'class': 'input-'}),
 
 		}
 
@@ -49,6 +49,10 @@ class ContratadoAdmin(admin.ModelAdmin):
 		('DATOS PERSONALES DEL CLIENTE', {'fields': [('cedula', 'fecha_n', 'edad', 'telefono_o'), 'rif']}),
 		('DATOS DE BUSQUEDA', {'fields': [('estado', 'municipio', 'parroquia'), ('sector', 'nombre_sector'), ('ubicacion', 'nombre_ubicacion'),
 			('vivienda', 'nombre_vivienda'),('piso', 'numero'), ('punto_referencia'), ]}),
+		(None, {'fields': [()]}),
+		('DATOS DE SALUD', {'fields': ['cancer', 'diabetes', 'enfermedad_corazon', 'presion_arterial','enfermedad_renal',
+			'enfermedad_mental','enfermedades_importantes','salud','peso','estatura','enfermedad_respiratoria','indique_respiratoria',
+			'enfermedad_digestivo','indique_digestivo','enfermedad_circulatorio','indique_circulatorio','otras_enfermedades','indique_otras']}),
 		('SERVICIO A CONTRATAR', {'fields': ['servicio' ]}),
 			]
 	
