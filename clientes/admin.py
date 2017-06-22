@@ -25,7 +25,7 @@ class PotencialesAdmin(admin.ModelAdmin):
 	('USUARIO DEL CLIENTE POTENCIAL', {'fields': ['usuario']}),
 	('DATOS DEL CLIENTE POTENCIAL', {'fields': [('nombre', 'apellido'), ('celular', 'telefono_h')]}),
 	('DATOS FAMILIARES', {'fields': [('personas', 'cantidad_p', 'adultos')]}),
-	('DATOS DE UBICACION', {'fields': [('valencia','zona', 'medio_contactado')]})
+	('DATOS DE UBICACION', {'fields': [('valencia','zona'), ('estado','municipio','parroquia'),'medio_contactado']})
 				]
 	form = PotencialesForm
 	inlines = [ActividadInline]

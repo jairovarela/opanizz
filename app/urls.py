@@ -17,7 +17,7 @@ from django.conf.urls import include, url
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from clientes.views import ClienteServiciosView
+from clientes.views import ClienteServiciosView, DatosClientesView, DatosClientesUpdate
 from clientes import views
 
 urlpatterns = [
@@ -27,8 +27,8 @@ urlpatterns = [
     url(r'^admin_tools/', include('admin_tools.urls')),
     url(r'^accounts/servicios/$', ClienteServiciosView.as_view(), name='clientes_servicios'),
     url(r'^accounts/profile/$', views.perfil, name='perfil'),
-    url(r'^accounts/user/$', views.usuario, name='usuario'),
-    url(r'^accounts/datos/$', views.datos, name='datos'),
+    url(r'^accounts/(?P<pk>\d+)/user/$', DatosClientesUpdate.as_view(), name='usuario'),
+    url(r'^accounts/datos/$', DatosClientesView.as_view(), name='datos'),
     url(r'^accounts/contratos/$', views.contrato, name='contrato'),
     url(r'^accounts/contratados/$', views.contratados, name='contratados'),
 ]

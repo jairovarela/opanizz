@@ -34,10 +34,49 @@ class PotencialesForm(ModelForm):
 			'cantidad_p',
 			'adultos',
 			'valencia',
-			'zona'
+			'zona',
+			'estado',
+			'municipio',
+			'parroquia',
 		]
 		widgets = {
 			'zona': Select2Widget(attrs={'class':'django-select2 form-control'}),
+			'estado': Select2Widget(attrs={'class':'django-select2 form-control'}),
+			'municipio': Select2Widget(attrs={'class':'django-select2 form-control'}),
+			'parroquia': Select2Widget(attrs={'class':'django-select2 form-control'}),
+			'adultos': CheckboxInput(attrs={'class':'choice',}),
+			'personas': CheckboxInput(attrs={'class':'choice'}),
+			'nombre': TextInput(attrs={'class':'form-control', 'required':'True'}),
+			'apellido': TextInput(attrs={'class':'form-control', 'required':'True'}),
+			'celular': NumberInput(attrs={'class':'form-control'}),
+			'telefono_h': NumberInput(attrs={'class': 'form-control'}),
+			'valencia': CheckboxInput(attrs={'class':'choice'}),
+			'cantidad_p': TextInput(attrs={'class':'form-control'}),
+		}
+
+class PotencialesUpdateForm(ModelForm):
+	class Meta:
+		model = Potenciales
+		fields =[
+		    'nombre',
+			'apellido',
+			'medio_contactado',
+			'celular',
+			'telefono_h',
+			'personas',
+			'cantidad_p',
+			'adultos',
+			'valencia',
+			'zona',
+			'estado',
+			'municipio',
+			'parroquia',
+		]
+		widgets = {
+			'zona': Select2Widget(attrs={'class':'django-select2 form-control'}),
+			'estado': Select2Widget(attrs={'class':'django-select2 form-control'}),
+			'municipio': Select2Widget(attrs={'class':'django-select2 form-control'}),
+			'parroquia': Select2Widget(attrs={'class':'django-select2 form-control'}),
 			'adultos': CheckboxInput(attrs={'class':'choice',}),
 			'personas': CheckboxInput(attrs={'class':'choice'}),
 			'nombre': TextInput(attrs={'class':'form-control'}),
@@ -45,5 +84,9 @@ class PotencialesForm(ModelForm):
 			'celular': NumberInput(attrs={'class':'form-control'}),
 			'telefono_h': NumberInput(attrs={'class': 'form-control'}),
 			'valencia': CheckboxInput(attrs={'class':'choice'}),
+			'cantidad_p': TextInput(attrs={'class':'form-control'}),
+			'nombre': TextInput(attrs={'class':'form-control', 'required':'True'}),
+			'apellido': TextInput(attrs={'class':'form-control', 'required':'True'}),
 		}
+		
 

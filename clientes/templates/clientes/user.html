@@ -149,24 +149,18 @@
                                         <p class="category">Modifica tus Datos de Perfil</p>
                                     </div>
                                     <div class="card-content">
-                                        <form>
+                                        <form action="" method="POST">{% csrf_token %}
                                             <div class="row">
-                                                <div class="col-md-5">
+                                                <div class="col-md-6">
                                                     <div class="form-group label-floating">
-                                                        <label class="control-label">Company (disabled)</label>
-                                                        <input type="text" class="form-control" disabled>
+                                                        <label class="control-label">Nombre (disabled)</label>
+                                                        {{form.nombre}}
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-6">
                                                     <div class="form-group label-floating">
-                                                        <label class="control-label">Username</label>
-                                                        <input type="text" class="form-control" >
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group label-floating">
-                                                        <label class="control-label">Email address</label>
-                                                        <input type="email" class="form-control" >
+                                                        <label class="control-label">Apellido</label>
+                                                        {{form.apellido}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -174,23 +168,14 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group label-floating">
-                                                        <label class="control-label">Fist Name</label>
-                                                        <input type="text" class="form-control" >
+                                                        <label class="control-label">Celular</label>
+                                                        {{form.celular}}
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group label-floating">
-                                                        <label class="control-label">Last Name</label>
-                                                        <input type="text" class="form-control" >
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="form-group label-floating">
-                                                        <label class="control-label">Adress</label>
-                                                        <input type="text" class="form-control" >
+                                                        <label class="control-label">Telefono de Habitacion</label>
+                                                        {{form.telefono_h}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -198,32 +183,20 @@
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <div class="form-group label-floating">
-                                                        <label class="control-label">City</label>
-                                                        <input type="text" class="form-control" >
+                                                        <label class="control-label">Estado</label>
+                                                        {{form.estado}}
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="form-group label-floating">
-                                                        <label class="control-label">Country</label>
-                                                        <input type="text" class="form-control" >
+                                                        <label class="control-label">Municipio</label>
+                                                        {{form.municipio}}
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="form-group label-floating">
-                                                        <label class="control-label">Postal Code</label>
-                                                        <input type="text" class="form-control" >
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <label>About Me</label>
-                                                        <div class="form-group label-floating">
-                                                            <label class="control-label"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
-                                                            <textarea class="form-control" rows="5"></textarea>
-                                                        </div>
+                                                        <label class="control-label">Parroquia</label>
+                                                        {{form.parroquia}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -309,3 +282,11 @@
             });
         </script>
 </html>
+
+<form action="" method="post">{% csrf_token %}
+    
+ 
+    
+
+    <input type='submit' class='btn btn-finish btn-fill btn-info btn-wd' name='finish' value='Finish' />
+</form>

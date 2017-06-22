@@ -50,9 +50,9 @@ class ContratadoAdmin(admin.ModelAdmin):
 		('DATOS DE BUSQUEDA', {'fields': [('estado', 'municipio', 'parroquia'), ('sector', 'nombre_sector'), ('ubicacion', 'nombre_ubicacion'),
 			('vivienda', 'nombre_vivienda'),('piso', 'numero'), ('punto_referencia'), ]}),
 		(None, {'fields': [()]}),
-		('DATOS DE SALUD', {'fields': ['cancer', 'diabetes', 'enfermedad_corazon', 'presion_arterial','enfermedad_renal',
-			'enfermedad_mental','enfermedades_importantes','salud','peso','estatura','enfermedad_respiratoria','indique_respiratoria',
-			'enfermedad_digestivo','indique_digestivo','enfermedad_circulatorio','indique_circulatorio','otras_enfermedades','indique_otras']}),
+		('DATOS DE SALUD', {'fields': [('cancer', 'diabetes'), ('enfermedad_corazon', 'presion_arterial'),('enfermedad_renal',
+			'enfermendad_mental'),'enfermedades_importantes',('salud','peso','estatura'),('enfermedad_respiratoria','indique_respiratoria'),
+			('enfermedad_digestivo','indique_digestivo'),('enfermedad_circulatorio','indique_circulatorio'),('otras_enfermedades','indique_otras')]}),
 		('SERVICIO A CONTRATAR', {'fields': ['servicio' ]}),
 			]
 	

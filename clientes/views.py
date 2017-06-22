@@ -4,8 +4,10 @@ from django.shortcuts import render
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from administracion.models import Servicios
-from forms import PotencialesForm
+from forms import PotencialesForm, PotencialesUpdateForm
 from contratos.forms import ContratosForm
+from django.views.generic.edit import FormView, UpdateView
+from models import Potenciales
 
 
 class ClienteServiciosView(LoginRequiredMixin, generic.View):
@@ -27,10 +29,43 @@ class ClienteServiciosView(LoginRequiredMixin, generic.View):
 
 
 
+class DatosClientesView(LoginRequiredMixin, FormView):
+    template_name = 'clientes/datos.html'
+    form_class = PotencialesForm
+    success_url = '/accounts/profile/'
+    fields =[
+            'nombre',
+            'apellido',
+            'medio_contactado',
+            'celular',
+            'telefono_h',
+            'personas',
+            'cantidad_p',
+            'adultos',
+            'valencia',
+            'zona',
+            'estado',
+            'municipio',
+            'parroquia',
+        ]
+        
+    def post(self, request, *args, **kwargs):
+        form = PotencialesForm(request.POST or None)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.usuario = request.user
+            instance.save()
+            form.save()
 
+        return super(DatosClientesView, self).post(form)
 
+class DatosClientesUpdate(UpdateView):
+    template_name = 'clientes/user.html'
+    model = Potenciales
+    form_class = PotencialesUpdateForm
+    success_url = '/accounts/profile/'
 
-
+    
 
 
 
@@ -51,14 +86,14 @@ def perfil(request):
 def usuario(request):
     return render(request, "clientes/user.html", {})
 
-def datos(request):
-    form = PotencialesForm(request.POST or None)
-    if form.is_valid():
-        print form.cleaned_data
-        instance = form.save(commit=False)
-        instance.usuario = request.user    
-        instance.save()
-    return render(request, "clientes/datos.html", {"form":form})
+#def datos(request):
+#    form = PotencialesForm(request.POST or None)
+#    if form.is_valid():
+#        instance = form.save(commit=False)
+#        print form
+#        instance.usuario = request.user    
+#        instance.save()
+#    return render(request, "clientes/datos.html", {"form":form})
 
 def contrato(request):
     form = ContratosForm(request.POST or None)

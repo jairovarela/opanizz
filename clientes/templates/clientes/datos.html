@@ -26,7 +26,7 @@
     <link href="{% static 'templates/assets/css/demo.css' %}" rel="stylesheet" />
 </head>
 
-<body>
+<body background="{% static 'templates/assets/img/opanizz.jpg' %}">
     <div class="image-container set-full-height" style="">
         <!--   Creative Tim Branding   
         <a href="http://creative-tim.com">
@@ -61,20 +61,20 @@
                                 </div>
                                 <div class="wizard-navigation">
                                     <ul>
-                                        <li><a href="#about" data-toggle="tab">Sobre ti</a></li>
-                                        <li><a href="#account" data-toggle="tab">Cuenta</a></li>
-                                        <li><a href="#address" data-toggle="tab">Direcciones</a></li>
+                                        <li><a href="#sobreti" data-toggle="tab">Sobre ti</a></li>
+                                        <li><a href="#familia" data-toggle="tab">Familiar</a></li>
+                                        <li><a href="#direcciones" data-toggle="tab">Direcciones</a></li>
                                     </ul>
                                 </div>
                             <form action="" method="POST">{% csrf_token %}
                                 <div class="tab-content">
-                                    <div class="tab-pane" id="about">
+                                    <div class="tab-pane" id="sobreti">
                                       <div class="row">
                                             <h4 class="info-text"> Comenzemos con una informacion basica</h4>
                                             <div class="col-sm-4 col-sm-offset-1">
                                                 <div class="picture-container">
                                                     <div class="picture">
-                                                        <img src="assets/img/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
+                                                        <img src="{% static 'templates/assets/img/new_logo.png' %}" class="picture-src" id="wizardPicturePreview" title=""/>
                                                         <input type="file" id="wizard-picture">
                                                     </div>
                                                     <h6>Choose Picture</h6>
@@ -125,11 +125,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tab-pane" id="account">
-                                        <h4 class="info-text"> What are you doing? (checkboxes) </h4>
+                                    <div class="tab-pane" id="familia">
+                                        <h4 class="info-text"> Informacion Familiar </h4>
                                         <div class="row">
                                             <div class="col-sm-10 col-sm-offset-1">
-                                                <div class="col-sm-4">
+                                                <div class="col-sm-6">
                                                     <div class="choice" data-toggle="wizard-checkbox">
                                                         {{form.adultos}}
                                                         <div class="icon">
@@ -138,54 +138,73 @@
                                                         <h6>¿Adultos mayor a su cargo?</h6>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-4">
+                                                <div class="col-sm-6">
                                                     <div class="choice" data-toggle="wizard-checkbox">
-                                                        {{form.valencia}}
+                                                        {{form.personas}}
                                                         <div class="icon">
                                                             <i class="fa fa-terminal"></i>
                                                         </div>
-                                                        <h6>¿Reside en Valencia?</h6>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <div class="choice" data-toggle="wizard-checkbox">
-                                                        {{form.valencia}}
-                                                        <div class="icon">
-                                                            <i class="fa fa-laptop"></i>
-                                                        </div>
-                                                        <h6>¿Posse personas a su cargo?</h6>
+                                                        <h6>¿Posee Personas a su Cargo?</h6>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="col-sm-10 col-sm-offset-1">
+                                                <div class="col-sm-6">
+
+                                                </div>
+                                                <div class="col-sm-6">
+                                                <h6 align="center"><small>cantidad</small></h6>
+                                                {{form.cantidad_p}}
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="tab-pane" id="address">
+                                    <div class="tab-pane" id="direcciones">
                                         <div class="row">
                                             <div class="col-sm-12">
-                                                <h4 class="info-text"> Are you living in a nice area? </h4>
+                                                <h4 class="info-text"> ¿En que parte te ubicas? </h4>
                                             </div>
-                                            <div class="col-sm-7 col-sm-offset-1">
-                                                <div class="form-group label-floating">
-                                                    <label class="control-label">Street Name</label>
-                                                    <input type="text" class="form-control">
+                                            <div class="col-sm-6">
+                                                <div class="choice" data-toggle="wizard-checkbox">
+                                                	{{form.valencia}}
+                                                    <div class="icon">
+                                                        <i class="fa fa-laptop"></i>
+                                                    </div>
+                                                    <h6>¿Vives en Valencia?</h6>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-3">
-                                                <div class="form-group label-floating">
-                                                    <label class="control-label">Street Number</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-5 col-sm-offset-1">
-                                                <div class="form-group label-floating">
-                                                    <label class="control-label">City</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-5">
-                                                <div class="form-group label-floating">
+                                            <div class="col-sm-6">
+                                                <div align="center" class="form-group label-floating">
                                                     <label class="control-label">Zonas</label>
                                                     {{form.zona}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <div class="form-group label-floating">
+                                                    <h2 align="center">¿Fuera de Valencia?</h2>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4 col-sm-offset-1">
+                                                <div align="center" class="form-group label-floating">
+                                                    <label class="control-label">Estado</label>
+                                                    {{form.estado}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div align="center" class="form-group label-floating">
+                                                    <label class="control-label">Municipio</label>
+                                                    {{form.municipio}}
+                                                </div>
+                                            </div>
+                                            <div align="center" class="col-sm-4 col-sm-offset-1">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Parroquia</label>
+                                                    {{form.parroquia}}
                                                 </div>
                                             </div>
                                         </div>
