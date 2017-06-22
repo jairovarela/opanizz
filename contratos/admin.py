@@ -46,7 +46,7 @@ class ContratadoAdmin(admin.ModelAdmin):
 	fieldsets= [ 
 		(None, {'fields': [()]}),
 		('CLIENTE A CONTRATAR', {'fields': ['cliente']}),
-		('DATOS PERSONALES DEL CLIENTE', {'fields': [('cedula', 'fecha_n', 'edad', 'telefono_o'), 'rif']}),
+		('DATOS PERSONALES DEL CLIENTE', {'fields': [('cedula', 'fecha_n'), 'edad', 'telefono_o', 'rif']}),
 		('DATOS DE BUSQUEDA', {'fields': [('estado', 'municipio', 'parroquia'), ('sector', 'nombre_sector'), ('ubicacion', 'nombre_ubicacion'),
 			('vivienda', 'nombre_vivienda'),('piso', 'numero'), ('punto_referencia'), ]}),
 		(None, {'fields': [()]}),

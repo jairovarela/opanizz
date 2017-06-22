@@ -27,7 +27,7 @@
 </head>
 
 <body>
-    <div class="image-container set-full-height" style="">
+    <div class="image-container set-full-height" style="background-color: #0a8bf5">
         <!--   Creative Tim Branding   
         <a href="http://creative-tim.com">
              <div class="logo-container">
@@ -38,13 +38,8 @@
                     Creative Tim
                 </div>
             </div>
-        </a> -->
+        </a>-->
 
-        <!--  Made With Material Kit  -->
-        <a href="http://demos.creative-tim.com/material-kit/index.html?ref=material-bootstrap-wizard" class="made-with-mk">
-            <div class="brand">Opa24 </div>
-            <div class="made-with"> Tu mejor <strong>Servicio</strong></div>
-        </a>
 
         <!--   Big container   -->
         <div class="container">
@@ -52,159 +47,157 @@
                 <div class="col-sm-8 col-sm-offset-2">
                     <!--      Wizard container        -->
                     <div class="wizard-container">
-                        <div class="card wizard-card" data-color="blue" id="wizardProfile">
+                        <div class="card wizard-card" data-color="blue" id="wizard">
+                            <form action="" method="">
+                            <!--        You can switch " data-color="rose" "  with one of the next bright colors: "blue", "green", "orange", "purple"        -->
+
                                 <div class="wizard-header">
                                     <h3 class="wizard-title">
-                                       Contrata Un Servicio
+                                        Contrata Tu Servicio
                                     </h3>
-                                    <h5>Esta informacion nos hara saber mas sobre ti.</h5>
+                                    <h5>Completa toda la informacion necesaria para adquirir el servicio</h5>
                                 </div>
                                 <div class="wizard-navigation">
                                     <ul>
-                                        <li><a href="#sobreti" data-toggle="tab">Sobre ti</a></li>
-                                        <li><a href="#familia" data-toggle="tab">Familiar</a></li>
-                                        <li><a href="#direcciones" data-toggle="tab">Direcciones</a></li>
+                                        <li><a href="#datos" data-toggle="tab">Datos Personales</a></li>
+                                        <li><a href="#busqueda" data-toggle="tab">Datos de Busqueda</a></li>
+                                        <li><a href="#facilities" data-toggle="tab">Facilities</a></li>
+                                        <li><a href="#description" data-toggle="tab">Description</a></li>
                                     </ul>
                                 </div>
-                            <form action="" method="POST">{% csrf_token %}
+
                                 <div class="tab-content">
-                                    <div class="tab-pane" id="sobreti">
-                                      <div class="row">
-                                            <h4 class="info-text"> Comenzemos con una informacion basica</h4>
-                                            <div class="col-sm-4 col-sm-offset-1">
-                                                <div class="picture-container">
-                                                    <div class="picture">
-                                                        <img src="{% static 'templates/assets/img/new_logo.png' %}" class="picture-src" id="wizardPicturePreview" title=""/>
-                                                        <input type="file" id="wizard-picture">
+                                    <div class="tab-pane" id="datos">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <h4 class="info-text"> Datos Personales del Cliente</h4>
+                                            </div>
+                                            <div class="col-sm-5 col-sm-offset-1">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Cedula</label>
+                                                    {{form.cedula}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Edad</label>
+                                                    {{form.edad}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5 col-sm-offset-1">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Fecha de Nacimiento</label>
+                                                    {{form.fecha_n}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Telefono de Oficina</label>
+                                                    <div class="input-group">
+                                                        {{form.telefono_o}}
                                                     </div>
-                                                    <h6>Choose Picture</h6>
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
-                                                <div class="input-group">
-                                                    <span class="input-group-addon">
-                                                        <i class="material-icons">face</i>
-                                                    </span>
-                                                    <div class="form-group label-floating">
-                                                      <label class="control-label">Nombre<small>(requerido)</small></label>
-                                                      {{form.nombre}}
-                                                    </div>
-                                                </div>
-
-                                                <div class="input-group">
-                                                    <span class="input-group-addon">
-                                                        <i class="material-icons">record_voice_over</i>
-                                                    </span>
-                                                    <div class="form-group label-floating">
-                                                      <label class="control-label">Apellido<small>(requerido)</small></label>
-                                                      {{form.apellido}}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-5 col-sm-offset-1">
-                                                <div class="input-group">
-                                                    <span class="input-group-addon">
-                                                        <i class="material-icons">phone</i>
-                                                    </span>
-                                                    <div class="form-group label-floating">
-                                                        <label class="control-label">Celular <small>(required)</small></label>
-                                                        {{form.celular}}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-5 col-sm-offset-1">
-                                                <div class="input-group">
-                                                    <span class="input-group-addon">
-                                                        <i class="material-icons">phone</i>
-                                                    </span>
-                                                    <div class="form-group label-floating">
-                                                        <label class="control-label">Casa <small>(required)</small></label>
-                                                        {{form.telefono_h}}
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">R.I.F.</label>
+                                                    <div class="input-group">
+                                                        {{form.rif}}
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tab-pane" id="familia">
-                                        <h4 class="info-text"> Informacion Familiar </h4>
+                                    <div class="tab-pane" id="busqueda">
+                                        <h4 class="info-text">Especifica tu Direccion de Habitacion</h4>
                                         <div class="row">
                                             <div class="col-sm-10 col-sm-offset-1">
-                                                <div class="col-sm-6">
-                                                    <div class="choice" data-toggle="wizard-checkbox">
-                                                        {{form.adultos}}
-                                                        <div class="icon">
-                                                            <i class="fa fa-pencil"></i>
-                                                        </div>
-                                                        <h6>¿Adultos mayor a su cargo?</h6>
+                                                <div class="col-sm-4">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Estado</label>
+                                                        {{form.estado}}
                                                     </div>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <div class="choice" data-toggle="wizard-checkbox">
-                                                        {{form.personas}}
-                                                        <div class="icon">
-                                                            <i class="fa fa-terminal"></i>
-                                                        </div>
-                                                        <h6>¿Posee Personas a su Cargo?</h6>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-10 col-sm-offset-1">
-                                                <div class="col-sm-6">
-
-                                                </div>
-                                                <div class="col-sm-6">
-                                                <h6 align="center"><small>cantidad</small></h6>
-                                                {{form.cantidad_p}}
                                                 </div>
                                                 <div class="col-sm-4">
-                                                    
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Municipio</label>
+                                                        {{form.municipio}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Parroquia</label>
+                                                        {{form.parroquia}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Edad</label>
+                                                        {{form.edad}}
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tab-pane" id="direcciones">
+                                    <div class="tab-pane" id="facilities">
+                                        <h4 class="info-text">Tell us more about facilities. </h4>
                                         <div class="row">
-                                            <div class="col-sm-12">
-                                                <h4 class="info-text"> ¿En que parte te ubicas? </h4>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="choice" data-toggle="wizard-checkbox">
-                                                    {{form.valencia}}
-                                                    <div class="icon">
-                                                        <i class="fa fa-laptop"></i>
-                                                    </div>
-                                                    <h6>¿Vives en Valencia?</h6>
+                                            <div class="col-sm-5 col-sm-offset-1">
+                                              <div class="form-group label-floating">
+                                                    <label class="control-label">Your place is good for</label>
+                                                    <select class="form-control">
+                                                        <option disabled="" selected=""></option>
+                                                        <option>Business</option>
+                                                        <option>Vacation </option>
+                                                        <option>Work</option>
+                                                    </select>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-6">
-                                                <div align="center" class="form-group label-floating">
-                                                    <label class="control-label">Zonas</label>
-                                                    {{form.zona}}
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12">
+                                            <div class="col-sm-5">
                                                 <div class="form-group label-floating">
-                                                    <h2 align="center">¿Fuera de Valencia?</h2>
+                                                    <label class="control-label">Is air conditioning included ?</label>
+                                                    <select class="form-control">
+                                                        <option disabled="" selected=""></option>
+                                                        <option>Yes</option>
+                                                        <option>No </option>
+                                                    </select>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-4 col-sm-offset-1">
-                                                <div align="center" class="form-group label-floating">
-                                                    <label class="control-label">Estado</label>
-                                                    {{form.estado}}
+                                            <div class="col-sm-5 col-sm-offset-1">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Does your place have wi-fi?</label>
+                                                    <select class="form-control">
+                                                        <option disabled="" selected=""></option>
+                                                        <option>Yes</option>
+                                                        <option>No </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Is breakfast included?</label>
+                                                    <select class="form-control">
+                                                        <option disabled="" selected=""></option>
+                                                        <option>Yes</option>
+                                                        <option>No </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="description">
+                                        <div class="row">
+                                            <h4 class="info-text"> Drop us a small description. </h4>
+                                            <div class="col-sm-6 col-sm-offset-1">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Place description</label>
+                                                    <textarea class="form-control" placeholder="" rows="9"></textarea>
                                                 </div>
                                             </div>
                                             <div class="col-sm-4">
-                                                <div align="center" class="form-group label-floating">
-                                                    <label class="control-label">Municipio</label>
-                                                    {{form.municipio}}
-                                                </div>
-                                            </div>
-                                            <div align="center" class="col-sm-4 col-sm-offset-1">
                                                 <div class="form-group label-floating">
-                                                    <label class="control-label">Parroquia</label>
-                                                    {{form.parroquia}}
+                                                    <label class="control-label">Example</label>
+                                                    <p class="description">"The place is really nice. We use it every sunday when we go fishing. It is so awesome."</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -213,9 +206,8 @@
                                 <div class="wizard-footer">
                                     <div class="pull-right">
                                         <input type='button' class='btn btn-next btn-fill btn-info btn-wd' name='next' value='Next' />
-                                        <input type='submit' class='btn btn-finish btn-fill btn-info btn-wd' name='finish' value='Finish' />
+                                        <input type='button' class='btn btn-finish btn-fill btn-info btn-wd' name='finish' value='Finish' />
                                     </div>
-
                                     <div class="pull-left">
                                         <input type='button' class='btn btn-previous btn-fill btn-default btn-wd' name='previous' value='Previous' />
                                     </div>
@@ -225,7 +217,7 @@
                         </div>
                     </div> <!-- wizard container -->
                 </div>
-            </div><!-- end row -->
+            </div> <!-- row -->
         </div> <!--  big container -->
 
         <div class="footer">
@@ -255,7 +247,44 @@
                         <div class="body form-line">
                             <form action="" method="POST">{% csrf_token %}
                                 <h3>MIS DATO DEL CONTRATO</h3>
-                                    {{form.as_p}}
+
+                                    {{form.cedula}}
+                                    {{form.edad}}
+                                    {{form.fecha_n}}
+                                    {{form.rif}}
+                                    {{form.telefono_o}}
+                                    {{form.estado}}
+                                    {{form.municipio}}
+                                    {{form.parroquia}}
+                                    {{form.sector}}
+                                    {{form.nombre_sector}}
+                                    {{form.ubicacion}}
+                                    {{form.nombre_ubicacion}}
+                                    {{form.vivienda}}
+                                    {{form.nombre_vivienda}}
+                                    {{form.piso}}
+                                    {{form.numero}}
+                                    {{form.domicilio_laboral}}
+                                    {{form.punto_referencia}}
+                                    {{form.servicio}}
+                                    {{form.cancer}} 
+                                    {{form.diabetes}}
+                                    {{form.enfermedad_corazon}}
+                                    {{form.presion_arterial}}
+                                    {{form.enfermedad_renal }}
+                                    {{form.enfermendad_mental}} 
+                                    {{form.enfermedades_importantes}}
+                                    {{form.salud}}
+                                    {{form.peso}}
+                                    {{form.estatura }}
+                                    {{form.enfermedad_respiratoria }}
+                                    {{form.indique_respiratoria }}
+                                    {{form.enfermedad_digestivo }}
+                                    {{form.indique_digestivo }}
+                                    {{form.enfermedad_circulatorio }}
+                                    {{form.indique_circulatorio }}
+                                    {{form.otras_enfermedades}}
+                                    {{form.indique_otras}}
                                 <div>
 									<button class="btn btn-primary waves-effect" type="submit">GUARDAR DATOS</button>
 								</div>
