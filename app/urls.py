@@ -19,6 +19,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from clientes.views import ClienteServiciosView, DatosClientesView, DatosClientesUpdate
 from clientes import views
+from contratos.views import ContratoClientesView
 
 urlpatterns = [
     url(r'^$', views.inicio, name = 'inicio'),
@@ -29,7 +30,7 @@ urlpatterns = [
     url(r'^accounts/profile/$', views.perfil, name='perfil'),
     url(r'^accounts/(?P<pk>\d+)/user/$', DatosClientesUpdate.as_view(), name='usuario'),
     url(r'^accounts/datos/$', DatosClientesView.as_view(), name='datos'),
-    url(r'^accounts/contratos/$', views.contrato, name='contrato'),
+    url(r'^accounts/contratos/$', ContratoClientesView.as_view(), name='contrato'),
     url(r'^accounts/contratados/$', views.contratados, name='contratados'),
 ]
 if settings.DEBUG:

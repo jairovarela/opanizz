@@ -8,6 +8,8 @@ from forms import PotencialesForm, PotencialesUpdateForm
 from contratos.forms import ContratosForm
 from django.views.generic.edit import FormView, UpdateView
 from models import Potenciales
+from django.http import HttpResponseRedirect
+
 
 
 class ClienteServiciosView(LoginRequiredMixin, generic.View):
@@ -65,6 +67,16 @@ class DatosClientesUpdate(UpdateView):
     form_class = PotencialesUpdateForm
     success_url = '/accounts/profile/'
 
+        
+    def post(self, request, *args, **kwargs):
+        form = PotencialesForm(request.POST or None)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.usuario = request.user
+            instance.save()
+            form.save()
+
+        return super(DatosClientesUpdate, self).post(form)
     
 
 

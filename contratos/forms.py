@@ -3,7 +3,7 @@ from django.forms import ModelForm, CheckboxInput
 from models import Contratado
 from django import forms
 from django.forms import ModelForm, Textarea
-from django.forms.widgets import CheckboxInput
+from django.forms.widgets import CheckboxInput,SelectDateWidget
 from django_select2.forms import Select2Widget
 from suit.widgets import SuitDateWidget, AutosizedTextarea, SuitTimeWidget, SuitSplitDateTimeWidget
 
@@ -51,6 +51,6 @@ class ContratosForm(ModelForm):
 			'indique_otras', 
 		]
 		widgets = {
-			
+			'fecha_n': SelectDateWidget(attrs={'class':'datepicker form-control'})
 		}
 

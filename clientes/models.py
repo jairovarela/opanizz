@@ -3,6 +3,19 @@ from django.contrib.auth.models import User
 from django.db import models
 from generalidades.models import MedioContacto, MediosActividad, ZonasValencia, Estado, Municipio, Parroquia
 
+Cantidad = (
+			('1','1'),
+			('2','2'),
+			('3','3'),
+			('4','4'),
+			('5','5'),
+			('6','6'),
+			('7','7'),
+			('8','8'),
+			('9','9'),
+			('10','10'),
+			)
+
 class Potenciales(models.Model):
 	usuario = models.OneToOneField(User, verbose_name='Tu usuario', unique=True)
 	nombre = models.CharField(max_length=255, verbose_name='Nombres', help_text = 'Nombres Completos', blank=True)
@@ -11,7 +24,7 @@ class Potenciales(models.Model):
 	celular = models.IntegerField(null=True, blank=True, verbose_name='Telefono Celular')
 	telefono_h = models.IntegerField(null=True, blank=True, verbose_name='Telefono de Habitacion', help_text='Opcional si posee')
 	personas = models.BooleanField(default=False, verbose_name='Posee personas a su cargo', help_text='Marque en caso de poseer')
-	cantidad_p = models.IntegerField(default=0, null=True, verbose_name='Cantidad de personas a su cargo', blank=True)
+	cantidad_p = models.CharField(choices=Cantidad, max_length=2, null=True, verbose_name='Cantidad de personas a su cargo', blank=True)
 	adultos = models.BooleanField(default = False, verbose_name='Adulto Mayor a su cargo', help_text='Marque en caso de poseer')
 	valencia = models.BooleanField(default = False, verbose_name='Reside en Valencia', help_text='Marque de ser correcto')
 	zona = models.ForeignKey(ZonasValencia, null=True, blank=True, verbose_name='Seleccione la zona donde reside')
