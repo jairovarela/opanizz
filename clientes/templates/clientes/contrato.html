@@ -48,7 +48,7 @@
                     <!--      Wizard container        -->
                     <div class="wizard-container">
                         <div class="card wizard-card" data-color="blue" id="wizard">
-                            <form action="" method="">
+                            <form action="" method="post">{% csrf_token %}
                             <!--        You can switch " data-color="rose" "  with one of the next bright colors: "blue", "green", "orange", "purple"        -->
 
                                 <div class="wizard-header">
@@ -61,8 +61,8 @@
                                     <ul>
                                         <li><a href="#datos" data-toggle="tab">Datos Personales</a></li>
                                         <li><a href="#busqueda" data-toggle="tab">Datos de Busqueda</a></li>
-                                        <li><a href="#facilities" data-toggle="tab">Facilities</a></li>
-                                        <li><a href="#description" data-toggle="tab">Description</a></li>
+                                        <li><a href="#salud" data-toggle="tab">Datos de Salud</a></li>
+                                        <li><a href="#servicio" data-toggle="tab">Servicio a Contratar</a></li>
                                     </ul>
                                 </div>
 
@@ -70,7 +70,7 @@
                                     <div class="tab-pane" id="datos">
                                         <div class="row">
                                             <div class="col-sm-12">
-                                                <h4 class="info-text"> Datos Personales del Cliente</h4>
+                                                <h4 class="info-text"><strong>Datos Personales del Cliente</strong></h4>
                                             </div>
                                             <div class="col-sm-5 col-sm-offset-1">
                                                 <div class="form-group label-floating">
@@ -109,7 +109,7 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="busqueda">
-                                        <h4 class="info-text">Especifica tu Direccion de Habitacion</h4>
+                                        <h4 class="info-text"><strong>Especifica tu Direccion de Habitacion</strong></h4>
                                         <div class="row">
                                             <div class="col-sm-10 col-sm-offset-1">
                                                 <div class="col-sm-4">
@@ -178,68 +178,146 @@
                                                         {{form.numero}}
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane" id="facilities">
-                                        <h4 class="info-text">Tell us more about facilities. </h4>
-                                        <div class="row">
-                                            <div class="col-sm-5 col-sm-offset-1">
-                                              <div class="form-group label-floating">
-                                                    <label class="control-label">Your place is good for</label>
-                                                    <select class="form-control">
-                                                        <option disabled="" selected=""></option>
-                                                        <option>Business</option>
-                                                        <option>Vacation </option>
-                                                        <option>Work</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-5">
-                                                <div class="form-group label-floating">
-                                                    <label class="control-label">Is air conditioning included ?</label>
-                                                    <select class="form-control">
-                                                        <option disabled="" selected=""></option>
-                                                        <option>Yes</option>
-                                                        <option>No </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-5 col-sm-offset-1">
-                                                <div class="form-group label-floating">
-                                                    <label class="control-label">Does your place have wi-fi?</label>
-                                                    <select class="form-control">
-                                                        <option disabled="" selected=""></option>
-                                                        <option>Yes</option>
-                                                        <option>No </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-5">
-                                                <div class="form-group label-floating">
-                                                    <label class="control-label">Is breakfast included?</label>
-                                                    <select class="form-control">
-                                                        <option disabled="" selected=""></option>
-                                                        <option>Yes</option>
-                                                        <option>No </option>
-                                                    </select>
+                                                <div class="col-sm-10">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Punto de Referencia</label>
+                                                        {{form.punto_referencia}}
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tab-pane" id="description">
+                                    <div class="tab-pane" id="salud">
+                                        <h4 class="info-text"><strong>Describenos tus Datos de Salud.</strong></h4>
                                         <div class="row">
-                                            <h4 class="info-text"> Drop us a small description. </h4>
-                                            <div class="col-sm-6 col-sm-offset-1">
-                                                <div class="form-group label-floating">
-                                                    <label class="control-label">Place description</label>
-                                                    <textarea class="form-control" placeholder="" rows="9"></textarea>
+                                            <div class="col-sm-10 col-sm-offset-1">
+                                                <div class="col-sm-4">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Estado de Salud</label>
+                                                        {{form.salud}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Peso</label>
+                                                        {{form.peso}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Estatura</label>
+                                                        {{form.estatura}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <div class="form-group label-floating">
+                                                        <br><br><h4><strong>Indique si padece de:</strong></h4>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">¿Enfermedades del Corazon?</label>
+                                                        {{form.enfermedad_corazon}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">¿Diabetes?</label>
+                                                        {{form.diabetes}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">¿Cancer?</label>
+                                                        {{form.cancer}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">¿Presion Arterial?</label>
+                                                        {{form.presion_arterial}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">¿Enfermedades Renales?</label>
+                                                        {{form.enfermedad_renal}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">¿Enfermedades Mentales?</label>
+                                                        {{form.enfermendad_mental}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">¿Otras enfermedades Importantes?</label>
+                                                        {{form.enfermedades_importantes}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <div class="form-group label-floating">
+                                                        <br><br><h4><strong>Padece de alguna de estas enfermedades:</strong></h4>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Esfermedades Respiratorias</label>
+                                                        {{form.enfermedad_respiratoria}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Describa la enfermedad Respiratoria</label>
+                                                        {{form.indique_respiratoria}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Enfermedades Digestivas</label>
+                                                        {{form.enfermedad_digestivo}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Describa la enfermedad Digestiva</label>
+                                                        {{form.indique_digestivo}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Enfermedades Circulatorias</label>
+                                                        {{form.enfermedad_circulatorio}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Describa la enfermedad Circulatoria</label>
+                                                        {{form.indique_circulatorio}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Otras Enfermedades</label>
+                                                        {{form.otras_enfermedades}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Describa las otras enfermedades</label>
+                                                        {{form.indique_otras}}
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-4">
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="servicio">
+                                        <div class="row">
+                                            <h4 class="info-text"><strong>Selecciona el Servicio que Deseas Contratar</strong></h4>
+                                            <div class="col-sm-8 col-sm-offset-1">
                                                 <div class="form-group label-floating">
-                                                    <label class="control-label">Example</label>
-                                                    <p class="description">"The place is really nice. We use it every sunday when we go fishing. It is so awesome."</p>
+                                                  {{form.servicio}}  
                                                 </div>
                                             </div>
                                         </div>
@@ -247,11 +325,11 @@
                                 </div>
                                 <div class="wizard-footer">
                                     <div class="pull-right">
-                                        <input type='button' class='btn btn-next btn-fill btn-info btn-wd' name='next' value='Next' />
-                                        <input type='button' class='btn btn-finish btn-fill btn-info btn-wd' name='finish' value='Finish' />
+                                        <input type='button' class='btn btn-next btn-fill btn-info btn-wd' name='next' value='Siguiente' />
+                                        <input type='submit' class='btn btn-finish btn-fill btn-info btn-wd' name='finish' value='Contratar' />
                                     </div>
                                     <div class="pull-left">
-                                        <input type='button' class='btn btn-previous btn-fill btn-default btn-wd' name='previous' value='Previous' />
+                                        <input type='button' class='btn btn-previous btn-fill btn-default btn-wd' name='previous' value='Atras' />
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
@@ -264,7 +342,7 @@
 
         <div class="footer">
             <div class="container text-center">
-                 Made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Creative Tim</a>. Free download <a href="http://www.creative-tim.com/product/bootstrap-wizard">here.</a>
+                 Desarrollado por <a href="http://www.creative-tim.com">Expertos en Marketing Online</a>
             </div>
         </div>
     </div>
@@ -282,43 +360,3 @@
     <script src="{% static 'templates/assets/js/jquery.validate.min.js' %}"></script>
     <script src="{% static 'templates/assets/js/bootstrap-datepicker.js' %}"></script>
 </html>
-
-			<div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="body form-line">
-                            <form action="" method="POST">{% csrf_token %}
-                                <h3>MIS DATO DEL CONTRATO</h3>
-
-                                    
-                                    {{form.piso}}
-                                    {{form.numero}}
-                                    {{form.domicilio_laboral}}
-                                    {{form.punto_referencia}}
-                                    {{form.servicio}}
-                                    {{form.cancer}} 
-                                    {{form.diabetes}}
-                                    {{form.enfermedad_corazon}}
-                                    {{form.presion_arterial}}
-                                    {{form.enfermedad_renal }}
-                                    {{form.enfermendad_mental}} 
-                                    {{form.enfermedades_importantes}}
-                                    {{form.salud}}
-                                    {{form.peso}}
-                                    {{form.estatura }}
-                                    {{form.enfermedad_respiratoria }}
-                                    {{form.indique_respiratoria }}
-                                    {{form.enfermedad_digestivo }}
-                                    {{form.indique_digestivo }}
-                                    {{form.enfermedad_circulatorio }}
-                                    {{form.indique_circulatorio }}
-                                    {{form.otras_enfermedades}}
-                                    {{form.indique_otras}}
-                                <div>
-									<button class="btn btn-primary waves-effect" type="submit">GUARDAR DATOS</button>
-								</div>
-							</form>
-                        </div>
-                    </div>
-                </div>
-            </div>

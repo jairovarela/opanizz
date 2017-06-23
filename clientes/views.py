@@ -7,9 +7,13 @@ from administracion.models import Servicios
 from forms import PotencialesForm, PotencialesUpdateForm
 from contratos.forms import ContratosForm
 from django.views.generic.edit import FormView, UpdateView
+from django.views.generic import TemplateView
 from models import Potenciales
 from django.http import HttpResponseRedirect
 
+
+def is_profile_updated(user):
+    return all((getattr(user.potenciales, field.name) for field in user.potenciales._meta.fields))
 
 
 class ClienteServiciosView(LoginRequiredMixin, generic.View):
@@ -28,8 +32,7 @@ class ClienteServiciosView(LoginRequiredMixin, generic.View):
             'servicios': Servicios.objects.all()
         }
         return render(request, self.template_name, context)
-
-
+ 
 
 class DatosClientesView(LoginRequiredMixin, FormView):
     template_name = 'clientes/datos.html'
@@ -61,6 +64,13 @@ class DatosClientesView(LoginRequiredMixin, FormView):
 
         return super(DatosClientesView, self).post(form)
 
+
+class IniciarSesion(LoginRequiredMixin, TemplateView):
+    template_name = 'clientes/perfil.html'
+
+
+
+
 class DatosClientesUpdate(UpdateView):
     template_name = 'clientes/user.html'
     model = Potenciales
@@ -77,26 +87,25 @@ class DatosClientesUpdate(UpdateView):
             form.save()
 
         return super(DatosClientesUpdate, self).post(form)
+
     
-
-
-
-
-
 def handler404(request):
     response = render_to_response('404.html', {},context_instance=RequestContext(request))
     response.status_code = 404
     return response
 
+
 def inicio(request):
 	return render(request, "inicio.html", {})
 
 
-def perfil(request):
-	return render(request, "clientes/perfil.html", {})
+#def perfil(request):
+#	return render(request, "clientes/perfil.html", {})
+
 
 def usuario(request):
     return render(request, "clientes/user.html", {})
+
 
 #def datos(request):
 #    form = PotencialesForm(request.POST or None)
@@ -107,6 +116,7 @@ def usuario(request):
 #        instance.save()
 #    return render(request, "clientes/datos.html", {"form":form})
 
+
 def contrato(request):
     form = ContratosForm(request.POST or None)
     if form.is_valid():
@@ -114,5 +124,8 @@ def contrato(request):
         instance.save()
     return render(request, "clientes/contrato.html", {"form":form})
 
+
 def contratados(request):
     return render(request, "clientes/contrato_hecho.html", {})
+
+

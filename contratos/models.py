@@ -23,17 +23,19 @@ Salud = (
 )
 
 Respiratorio = (
-				('Bronquitis', 'Bronquietes Cronica'),
+				('Bronquitis', 'Bronquitis Cronica'),
 				('Tuberculosis', 'Tuberculosis'),
 				('Asma', 'Asma'),
-				('Otras', 'Otras' )
+				('Otras', 'Otras'),
+				('Ninguna', 'Ninguna')
 				)
 Circulatorio = (
 				('Trastorno en la presion arterial','Trastorno en la presion arterial '),
 				('Alteraciones cardiacas','Alteraciones cardiacas'),
 				('Angina de pecho','Angina de pecho '),
 				('Infarto de miocardio','Infarto de miocardio'),
-				('Otras enfermedades relacionados','Otras enfermedades relacionados:')
+				('Otras enfermedades relacionados','Otras enfermedades relacionados:'),
+				('Ninguna', 'Ninguna')
 				)
 Digestivo = (
 			('Enfermedades del higado','Enfermedades del higado'),
@@ -41,6 +43,7 @@ Digestivo = (
 			('Dispepcia','Dispepcia'),
 			('Gastritis','Gastritis'),
 			('Otras enfermedades','Otras enfermedades'),
+			('Ninguna', 'Ninguna')
 			)
 Otras = (
 		('Reumatismo','Reumatismo'),
@@ -50,7 +53,7 @@ Otras = (
 		('Enfermedades en los huesos','Enfermedades en los huesos'),
 		('Convulsiones','Convulsiones'),
 		('Paralisis','Paralisis'),
-
+		('Ninguna', 'Ninguna')
 		)
 
 class Contratado(models.Model):
@@ -83,8 +86,8 @@ class Contratado(models.Model):
 	enfermendad_mental = models.CharField(max_length=20, blank=True, verbose_name='Enfermedades Mentales')
 	enfermedades_importantes = models.CharField(max_length=250, blank=True, verbose_name='Otras Importantes')
 	salud = models.CharField(max_length=7, choices=Salud, verbose_name='Estado de Salud', blank=True)
-	peso = models.CharField(max_length=4, blank=True, verbose_name='Indique su peso')
-	estatura = models.CharField(max_length=5, blank=True, verbose_name='Indique su Estatura')
+	peso = models.CharField(max_length=7, blank=True, verbose_name='Indique su peso')
+	estatura = models.CharField(max_length=7, blank=True, verbose_name='Indique su Estatura')
 	enfermedad_respiratoria = models.CharField(max_length=50, blank=True, choices=Respiratorio, verbose_name='Enfermedades Respiratorias', help_text='Indique si Padece')
 	indique_respiratoria = models.CharField(max_length=150, blank=True, verbose_name='Indique', help_text='Especifique enfermedad Respirarotia')
 	enfermedad_digestivo = models.CharField(max_length=50, blank=True, choices=Digestivo, verbose_name='Enfermedades Digestivas', help_text='Indique si Padece')

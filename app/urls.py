@@ -17,7 +17,7 @@ from django.conf.urls import include, url
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from clientes.views import ClienteServiciosView, DatosClientesView, DatosClientesUpdate
+from clientes.views import ClienteServiciosView, DatosClientesView, DatosClientesUpdate, IniciarSesion
 from clientes import views
 from contratos.views import ContratoClientesView
 
@@ -27,7 +27,7 @@ urlpatterns = [
     url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^admin_tools/', include('admin_tools.urls')),
     url(r'^accounts/servicios/$', ClienteServiciosView.as_view(), name='clientes_servicios'),
-    url(r'^accounts/profile/$', views.perfil, name='perfil'),
+    url(r'^accounts/profile/$', IniciarSesion.as_view(), name='perfil'),
     url(r'^accounts/(?P<pk>\d+)/user/$', DatosClientesUpdate.as_view(), name='usuario'),
     url(r'^accounts/datos/$', DatosClientesView.as_view(), name='datos'),
     url(r'^accounts/contratos/$', ContratoClientesView.as_view(), name='contrato'),
