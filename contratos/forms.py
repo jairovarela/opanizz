@@ -56,12 +56,17 @@ class ContratosForm(ModelForm):
 			'edad': TextInput(attrs={'class':'form-control'}),
 			'telefono_o': TextInput(attrs={'class':'form-control'}),
 			'rif': TextInput(attrs={'class':'form-control'}),
-			'estado': Select2Widget(attrs={'class':'form-control'}),
-			'municipio': Select2Widget(attrs={'class':'form-control'}),
-			'parroquia': Select2Widget(attrs={'class':'form-control'}),
-			'sector': Select2Widget(attrs={'class':'form-control'}),
-			'ubicacion': Select2Widget(attrs={'class':'form-control'}),
-			'vivienda': Select2Widget(attrs={'class':'form-control'}),
+			'estado': Select2Widget(attrs={'class':'django-seles2 form-control'}),
+			'municipio': Select2Widget(attrs={'class':'django-seles2 form-control'}),
+			'parroquia': Select2Widget(attrs={'class':'django-seles2 form-control'}),
+			'sector': Select2Widget(attrs={'class':'django-seles2 form-control'}),
+			'nombre_sector': TextInput(attrs={'class':'form-control'}),
+			'ubicacion': Select2Widget(attrs={'class':'django-seles2 form-control'}),
+			'nombre_ubicacion': TextInput(attrs={'class':'form-control'}),
+			'vivienda': Select2Widget(attrs={'class':'django-seles2 form-control'}),
+			'nombre_vivienda': TextInput(attrs={'class':'form-control'}),
+			'piso': TextInput(attrs={'class':'form-control'}),
+			'numero': TextInput(attrs={'class':'form-control'}),
 
 		}
 

@@ -130,10 +130,52 @@
                                                         {{form.parroquia}}
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-4">
+                                                <div class="col-sm-6">
                                                     <div class="form-group label-floating">
-                                                        <label class="control-label">Edad</label>
-                                                        {{form.edad}}
+                                                        <label class="control-label">Sector</label>
+                                                        {{form.sector}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Nombre del Sector</label>
+                                                        {{form.nombre_sector}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Ubicacion</label>
+                                                        {{form.ubicacion}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Nombre de la Ubicacion</label>
+                                                        {{form.nombre_ubicacion}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Vivienda</label>
+                                                        {{form.vivienda}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Nombre de la Vivienda</label>
+                                                        {{form.nombre_vivienda}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Piso</label>
+                                                        {{form.piso}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Numero</label>
+                                                        {{form.numero}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -248,20 +290,7 @@
                             <form action="" method="POST">{% csrf_token %}
                                 <h3>MIS DATO DEL CONTRATO</h3>
 
-                                    {{form.cedula}}
-                                    {{form.edad}}
-                                    {{form.fecha_n}}
-                                    {{form.rif}}
-                                    {{form.telefono_o}}
-                                    {{form.estado}}
-                                    {{form.municipio}}
-                                    {{form.parroquia}}
-                                    {{form.sector}}
-                                    {{form.nombre_sector}}
-                                    {{form.ubicacion}}
-                                    {{form.nombre_ubicacion}}
-                                    {{form.vivienda}}
-                                    {{form.nombre_vivienda}}
+                                    
                                     {{form.piso}}
                                     {{form.numero}}
                                     {{form.domicilio_laboral}}
