@@ -94,7 +94,6 @@ class DatosClientesView(LoginRequiredMixin, FormView):
             instance.usuario = request.user
             instance.save()
             form.save()
-            return redirect('/accounts/profile/')
         return super(DatosClientesView, self).post(form)
 
 
