@@ -18,14 +18,14 @@ class ActividadAdmin(admin.ModelAdmin):
 	form = ActividadSelect2WidgetForm
 
 class PotencialesAdmin(admin.ModelAdmin):
-	list_display = ['nombre', 'apellido', 'celular','telefono_h', ('valencia'), 'usuario']
+	list_display = ['nombre', 'apellido', 'celular','telefono_h', 'usuario']
 	search_fields = ['nombre', 'apellido']
 	fieldsets = [
 	(None, {'fields': [()]}),
 	('USUARIO DEL CLIENTE POTENCIAL', {'fields': ['usuario']}),
 	('DATOS DEL CLIENTE POTENCIAL', {'fields': [('nombre', 'apellido'), ('celular', 'telefono_h')]}),
 	('DATOS FAMILIARES', {'fields': [('personas', 'cantidad_p', 'adultos')]}),
-	('DATOS DE UBICACION', {'fields': [('valencia','zona'), ('estado','municipio','parroquia'),'medio_contactado']})
+	('DATOS DE UBICACION', {'fields': [('estado','municipio','parroquia')]})
 				]
 	form = PotencialesForm
 	inlines = [ActividadInline]

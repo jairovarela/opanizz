@@ -157,7 +157,6 @@
                                                     <p class="category">Toda una Gama de servicios disponibles para ti</p>
                                                 </div>
                                                 <div class="card-content table-responsive">
-                                                    <form action="" method="POST" accept-charset="utf-8">{% csrf_token %}
                                                        {% for servicio in servicios  %}
                                                             <div class="col-md-4 col-sm-6">
                                                              <div class="card-container">
@@ -193,7 +192,7 @@
                                                                                 <p class="text-center">{{servicio.descripcion}}</p>
 
                                                                                 <div class="stats-container">
-                                                                                    <button class="btn btn-info waves-effect" type="submit" href='/accounts/profile/contratos/'>CONTRATAR SERVICIO</button>
+                                                                                    <button class="btn btn-info waves-effect" href="http://administracion.opaniz.com/accounts/contratos/">CONTRATAR SERVICIO</button>
                                                                                 </div>
 
                                                                             </div>
@@ -213,7 +212,6 @@
                                                             </div> <!-- end card-container -->
                                                         </div>
                                                         {% endfor %}
-                                                    </form>
                                                     
                                                 </div>
                                             </div>

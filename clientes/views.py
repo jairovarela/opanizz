@@ -45,6 +45,7 @@ def is_profile_updated(user):
 
 class IniciarSesion(LoginRequiredMixin, generic.View):
     template_name = 'clientes/perfil.html'
+    success_url = '/accounts/profile/'
     def get(self, request, *args, **kwargs):
         if not is_profile_updated(request.user):
             return redirect('/accounts/datos/')
@@ -61,7 +62,6 @@ class ClienteServiciosView(LoginRequiredMixin, generic.View):
 
 
     def post(self, request, *args, **kwargs):
-    	import ipdb; ipdb.set_trace()
     	data = request.POST
         context = {
             'servicios': Servicios.objects.all()
@@ -76,14 +76,12 @@ class DatosClientesView(LoginRequiredMixin, FormView):
     fields =[
             'nombre',
             'apellido',
-            'medio_contactado',
             'celular',
             'telefono_h',
             'personas',
             'cantidad_p',
             'adultos',
             'valencia',
-            'zona',
             'estado',
             'municipio',
             'parroquia',
