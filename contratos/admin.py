@@ -62,6 +62,18 @@ class ContratadoAdmin(admin.ModelAdmin):
 class BeneficiaarioAdmin(admin.ModelAdmin):
 	list_display = ['contratado', 'nombre', 'apellido', 'fecha_n']
 	form = BeneficiarioForm
+	fieldsets= [ 
+		(None, {'fields': [()]}),
+		('CLIENTE A CONTRATAR', {'fields': ['cliente']}),
+		('DATOS PERSONALES DEL CLIENTE', {'fields': [('cedula', 'fecha_n'), 'edad', 'telefono_o', 'rif']}),
+		('DATOS DE BUSQUEDA', {'fields': [('estado', 'municipio', 'parroquia'), ('sector', 'nombre_sector'), ('ubicacion', 'nombre_ubicacion'),
+			('vivienda', 'nombre_vivienda'),('piso', 'numero'), ('punto_referencia'), ]}),
+		(None, {'fields': [()]}),
+		('DATOS DE SALUD', {'fields': [('cancer', 'diabetes'), ('enfermedad_corazon', 'presion_arterial'),('enfermedad_renal',
+			'enfermendad_mental'),'enfermedades_importantes',('salud','peso','estatura'),('enfermedad_respiratoria','indique_respiratoria'),
+			('enfermedad_digestivo','indique_digestivo'),('enfermedad_circulatorio','indique_circulatorio'),('otras_enfermedades','indique_otras')]}),
+		('SERVICIO A CONTRATAR', {'fields': ['servicio' ]}),
+			]
 
 admin.site.register(Contratado, ContratadoAdmin)
 admin.site.register(Beneficiario, BeneficiaarioAdmin)

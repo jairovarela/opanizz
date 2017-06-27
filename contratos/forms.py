@@ -1,12 +1,25 @@
 from django import forms 
 from django.forms import ModelForm, CheckboxInput
-from models import Contratado
+from models import Contratado, Beneficiario
 from django import forms
 from django.forms import ModelForm, Textarea
-from django.forms.widgets import CheckboxInput, TextInput, NumberInput, SelectDateWidget
+from django.forms.widgets import CheckboxInput, TextInput, NumberInput, SelectDateWidget, DateInput
 from django.contrib.admin.widgets import AdminDateWidget
 from django_select2.forms import Select2Widget
 from suit.widgets import SuitDateWidget, AutosizedTextarea, SuitTimeWidget, SuitSplitDateTimeWidget
+from betterforms.multiform import MultiModelForm
+
+
+
+class BeneficiarioForm(forms.ModelForm):
+	class Meta:
+		model = Beneficiario
+		exclude = []
+		field = ('contratado',)
+		widgets = {
+		'contratado': Select2Widget,
+		}
+
 
 class ContratosForm(ModelForm):
 	class Meta:
@@ -51,7 +64,7 @@ class ContratosForm(ModelForm):
 			'indique_otras', 
 		]
 		widgets = {
-			'fecha_n': SelectDateWidget(attrs={'class':'datepicker form-control'}),
+			'fecha_n': DateInput(attrs={'class':'form-control', 'placeholder':'dd/mm/aaaa'}),
 			'cedula': TextInput(attrs={'class':'form-control'}),
 			'edad': TextInput(attrs={'class':'form-control'}),
 			'telefono_o': TextInput(attrs={'class':'form-control'}),
@@ -69,12 +82,12 @@ class ContratosForm(ModelForm):
 			'numero': TextInput(attrs={'class':'form-control'}),
 			'punto_referencia': Textarea(attrs={'class':'form-control input-xlarge','rows': 4}),
 			'salud': Select2Widget(attrs={'class':'django-seles2 form-control'}),
-			'enfermedad_corazon': TextInput(attrs={'class':'form-control'}),
-			'diabetes': TextInput(attrs={'class':'form-control'}),
-			'cancer': TextInput(attrs={'class':'form-control'}),
-			'presion_arterial': TextInput(attrs={'class':'form-control'}),
-			'enfermedad_renal': TextInput(attrs={'class':'form-control'}),
-			'enfermendad_mental': TextInput(attrs={'class':'form-control'}),
+			'enfermedad_corazon': Select2Widget(attrs={'class':'django-seles2 form-control'}),
+			'diabetes': Select2Widget(attrs={'class':'django-seles2 form-control'}),
+			'cancer': Select2Widget(attrs={'class':'django-seles2 form-control'}),
+			'presion_arterial': Select2Widget(attrs={'class':'django-seles2 form-control'}),
+			'enfermedad_renal': Select2Widget(attrs={'class':'django-seles2 form-control'}),
+			'enfermendad_mental': Select2Widget(attrs={'class':'django-seles2 form-control'}),
 			'enfermedades_importantes': TextInput(attrs={'class':'form-control'}),
 			'peso': TextInput(attrs={'class':'form-control'}),
 			'estatura': TextInput(attrs={'class':'form-control'}),
@@ -89,3 +102,9 @@ class ContratosForm(ModelForm):
 			'servicio': Select2Widget(attrs={'class':'django-seles2 form-control'}),
 		}
 
+
+class MixForm(MultiModelForm):
+	form_classes = {
+			'clientes':ContratosForm,
+			'beneficiario':BeneficiarioForm,
+	}

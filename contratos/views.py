@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, render_to_response, get_object_or_404
 from django.template import RequestContext
 from administracion.models import Servicios
-from forms import ContratosForm
+from forms import ContratosForm, MixForm
 from django.views.generic.edit import FormView
 from clientes.models import Potenciales
 
@@ -41,3 +41,4 @@ class ContratoClientesView(LoginRequiredMixin, FormView):
 	        form.save()
 
 	    return super(ContratoClientesView, self).post(form)
+

@@ -14,6 +14,10 @@ def incremental():
 		return 'OPA-' + str(numcontrato)
 
 
+Opciones = (
+			('No','No'),
+			('Si','Si'),
+			)
 
 
 Salud = (
@@ -76,14 +80,14 @@ class Contratado(models.Model):
 	piso = models.CharField(max_length=10, blank=True)
 	numero = models.IntegerField(null=True, blank=True)
 	domicilio_laboral = models.CharField(max_length=200, blank=True)
-	punto_referencia = models.CharField(max_length=250, blank=True, verbose_name='Punto de Referencia de busqueda')
+	punto_referencia = models.CharField(max_length=250, verbose_name='Punto de Referencia de busqueda')
 	servicio = models.ForeignKey(Servicios, null=True, verbose_name='Servicio a Contratar')
-	cancer = models.CharField(max_length=20, blank=True, verbose_name='Cancer')
-	diabetes = models.CharField(max_length=20, blank=True, verbose_name='Diabetes')
-	enfermedad_corazon = models.CharField(max_length=20, blank=True, verbose_name='Enfermedades del Corazon')
-	presion_arterial = models.CharField(max_length=20, blank=True, verbose_name='Presion Arterial Alta')
-	enfermedad_renal = models.CharField(max_length=20, blank=True, verbose_name='Enfermedades Renales')
-	enfermendad_mental = models.CharField(max_length=20, blank=True, verbose_name='Enfermedades Mentales')
+	cancer = models.CharField(max_length=2, choices=Opciones, blank=True, verbose_name='Cancer')
+	diabetes = models.CharField(max_length=2, choices=Opciones, blank=True, verbose_name='Diabetes')
+	enfermedad_corazon = models.CharField(max_length=2, choices=Opciones, blank=True, verbose_name='Enfermedades del Corazon')
+	presion_arterial = models.CharField(max_length=2, choices=Opciones, blank=True, verbose_name='Presion Arterial Alta')
+	enfermedad_renal = models.CharField(max_length=2, choices=Opciones, blank=True, verbose_name='Enfermedades Renales')
+	enfermendad_mental = models.CharField(max_length=2, choices=Opciones, blank=True, verbose_name='Enfermedades Mentales')
 	enfermedades_importantes = models.CharField(max_length=250, blank=True, verbose_name='Otras Importantes')
 	salud = models.CharField(max_length=7, choices=Salud, verbose_name='Estado de Salud', blank=True)
 	peso = models.CharField(max_length=7, blank=True, verbose_name='Indique su peso')
@@ -95,7 +99,7 @@ class Contratado(models.Model):
 	enfermedad_circulatorio = models.CharField(max_length=50, blank=True, choices=Circulatorio, verbose_name='Enfermedades Circulatorias', help_text='Indique si Padece')
 	indique_circulatorio = models.CharField(max_length=150, blank=True, verbose_name='Indique', help_text='Especifique Enfermedad Circulatoria')
 	otras_enfermedades = models.CharField(max_length=50, blank=True, choices=Otras, verbose_name='Otras Enfermedades', help_text='Indique si Padece')
-	indique_otras = models.CharField(max_length=150, verbose_name='Indique', help_text='Especifique la enfermedad')
+	indique_otras = models.CharField(max_length=150, blank=True, verbose_name='Indique', help_text='Especifique la enfermedad')
 	
 
 
@@ -115,6 +119,25 @@ class Beneficiario(models.Model):
 	edad = models.IntegerField(null=True, blank=True)
 	fecha_n = models.DateField(verbose_name = 'Fecha de Nacimiento')
 	telefono = models.IntegerField(blank = True, null = True)
+	beneficiario_cancer = models.CharField(max_length=2, choices=Opciones, blank=True, verbose_name='Cancer')
+	beneficiario_diabetes = models.CharField(max_length=2, choices=Opciones, blank=True, verbose_name='Diabetes')
+	beneficiario_enfermedad_corazon = models.CharField(max_length=2, choices=Opciones, blank=True, verbose_name='Enfermedades del Corazon')
+	beneficiario_presion_arterial = models.CharField(max_length=2, choices=Opciones, blank=True, verbose_name='Presion Arterial Alta')
+	beneficiario_enfermedad_renal = models.CharField(max_length=2, choices=Opciones, blank=True, verbose_name='Enfermedades Renales')
+	beneficiario_enfermendad_mental = models.CharField(max_length=2, choices=Opciones, blank=True, verbose_name='Enfermedades Mentales')
+	beneficiario_enfermedades_importantes = models.CharField(max_length=250, blank=True, verbose_name='Otras Importantes')
+	beneficiario_salud = models.CharField(max_length=7, choices=Salud, verbose_name='Estado de Salud', blank=True)
+	beneficiario_peso = models.CharField(max_length=7, blank=True, verbose_name='Indique su peso')
+	beneficiario_estatura = models.CharField(max_length=7, blank=True, verbose_name='Indique su Estatura')
+	beneficiario_enfermedad_respiratoria = models.CharField(max_length=50, blank=True, choices=Respiratorio, verbose_name='Enfermedades Respiratorias', help_text='Indique si Padece')
+	beneficiario_indique_respiratoria = models.CharField(max_length=150, blank=True, verbose_name='Indique', help_text='Especifique enfermedad Respirarotia')
+	beneficiario_enfermedad_digestivo = models.CharField(max_length=50, blank=True, choices=Digestivo, verbose_name='Enfermedades Digestivas', help_text='Indique si Padece')
+	beneficiario_indique_digestivo = models.CharField(max_length=150, blank=True, verbose_name='Indique', help_text='Especifique Enfermedad Digestiva')
+	beneficiario_enfermedad_circulatorio = models.CharField(max_length=50, blank=True, choices=Circulatorio, verbose_name='Enfermedades Circulatorias', help_text='Indique si Padece')
+	beneficiario_indique_circulatorio = models.CharField(max_length=150, blank=True, verbose_name='Indique', help_text='Especifique Enfermedad Circulatoria')
+	beneficiario_otras_enfermedades = models.CharField(max_length=50, blank=True, choices=Otras, verbose_name='Otras Enfermedades', help_text='Indique si Padece')
+	beneficiario_indique_otras = models.CharField(max_length=150, blank=True, verbose_name='Indique', help_text='Especifique la enfermedad')
+	
 
 	class Meta:
 		verbose_name = 'Beneficiario'
