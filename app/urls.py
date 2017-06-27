@@ -28,7 +28,7 @@ urlpatterns = [
     url(r'^admin_tools/', include('admin_tools.urls')),
     url(r'^accounts/servicios/$', ClienteServiciosView.as_view(), name='clientes_servicios'),
     url(r'^accounts/profile/$', IniciarSesion.as_view(), name='perfil'),
-    url(r'^accounts/(?P<pk>\d+)/user/$', DatosClientesUpdate.as_view(), name='usuario'),
+    url(r'^accounts/user/update/$', DatosClientesUpdate.as_view(), name='usuario'),
     url(r'^accounts/datos/$', DatosClientesView.as_view(), name='datos'),
     url(r'^accounts/contratos/$', ContratoClientesView.as_view(), name='contrato'),
     url(r'^accounts/contratados/$', views.contratados, name='contratados'),

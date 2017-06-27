@@ -103,6 +103,8 @@ class DatosClientesUpdate(UpdateView):
     form_class = PotencialesUpdateForm
     success_url = '/accounts/profile/'
 
+    def get_object(self, queryset=None):
+         return Potenciales.objects.get(usuario=self.request.user)
         
     def post(self, request, *args, **kwargs):
         form = PotencialesForm(request.POST or None)
