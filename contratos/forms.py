@@ -103,8 +103,3 @@ class ContratosForm(ModelForm):
 		}
 
 
-class MixForm(MultiModelForm):
-	form_classes = {
-			'clientes':ContratosForm,
-			'beneficiario':BeneficiarioForm,
-	}

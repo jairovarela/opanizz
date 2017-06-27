@@ -45,6 +45,8 @@ class PotencialesForm(ModelForm):
 			'celular': NumberInput(attrs={'class':'form-control'}),
 			'telefono_h': NumberInput(attrs={'class': 'form-control'}),
 			'cantidad_p': Select2Widget(attrs={'class':'django-select2 form-control'}),
+			'adultos': Select2Widget(attrs={'class':'django-select2 form-control'}),
+			'personas': Select2Widget(attrs={'class':'django-select2 form-control'})
 		}
 
 class PotencialesUpdateForm(ModelForm):
