@@ -54,13 +54,13 @@ class ContratosForm(ModelForm):
 			'peso',
 			'estatura', 
 			'enfermedad_respiratoria', 
-			'indique_respiratoria', 
+			
 			'enfermedad_digestivo', 
-			'indique_digestivo', 
+			
 			'enfermedad_circulatorio', 
-			'indique_circulatorio', 
+			
 			'otras_enfermedades',
-			'indique_otras', 
+			
 		]
 		widgets = {
 			'fecha_n': DateInput(attrs={'class':'form-control', 'placeholder':'dd/mm/aaaa'}),
@@ -91,13 +91,13 @@ class ContratosForm(ModelForm):
 			'peso': TextInput(attrs={'class':'form-control'}),
 			'estatura': TextInput(attrs={'class':'form-control'}),
 			'enfermedad_respiratoria': Select2Widget(attrs={'class':'django-seles2 form-control'}),
-			'indique_respiratoria': TextInput(attrs={'class':'form-control'}),
+			
 			'enfermedad_digestivo': Select2Widget(attrs={'class':'django-seles2 form-control'}),
-			'indique_digestivo': TextInput(attrs={'class':'form-control'}),
+			
 			'enfermedad_circulatorio': Select2Widget(attrs={'class':'django-seles2 form-control'}),
-			'indique_circulatorio': TextInput(attrs={'class':'form-control'}),
+			
 			'otras_enfermedades': Select2Widget(attrs={'class':'django-seles2 form-control'}),
-			'indique_otras': TextInput(attrs={'class':'form-control'}),
+			
 			'servicio': Select2Widget(attrs={'class':'django-seles2 form-control'}),
 		}
 

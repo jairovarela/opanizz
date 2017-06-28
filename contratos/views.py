@@ -24,8 +24,8 @@ class ContratoClientesView(LoginRequiredMixin, FormView):
 			'diabetes', 'enfermedad_corazon', 'presion_arterial', 
 			'enfermedad_renal', 'enfermendad_mental', 'enfermedades_importantes',
 			'salud', 'peso', 'estatura', 'enfermedad_respiratoria', 
-			'indique_respiratoria', 'enfermedad_digestivo', 'indique_digestivo', 
-			'enfermedad_circulatorio', 'indique_circulatorio', 'otras_enfermedades', 'indique_otras',]
+			'enfermedad_digestivo',
+			'enfermedad_circulatorio', 'otras_enfermedades',]
     
     def post(self, request, *args, **kwargs):
 	    form = ContratosForm(request.POST or None)
