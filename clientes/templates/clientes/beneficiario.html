@@ -1,0 +1,381 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicon.ico">
+
+    <title>Opa24 Service App</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png" />
+    <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+
+    <!-- CSS Files -->
+    <link href="{% static 'templates/assets/css/bootstrap.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'templates/assets/css/material-bootstrap-wizard.css' %}" rel="stylesheet" />
+
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="{% static 'templates/assets/css/demo.css' %}" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="image-container set-full-height" style="background-color: #0a8bf5">
+        <!--   Creative Tim Branding   
+        <a href="http://creative-tim.com">
+             <div class="logo-container">
+                <div class="logo">
+                    <img src="assets/img/new_logo.png">
+                </div>
+                <div class="brand">
+                    Creative Tim
+                </div>
+            </div>
+        </a>-->
+
+
+        <!--   Big container   -->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <!--      Wizard container        -->
+                    <div class="wizard-container">
+                        <div class="card wizard-card" data-color="blue" id="wizard">
+                            <form action="" method="post">{% csrf_token %}
+                            <!--        You can switch " data-color="rose" "  with one of the next bright colors: "blue", "green", "orange", "purple"        -->
+
+                                <div class="wizard-header">
+                                    <h3 class="wizard-title">
+                                        Contrata Tu Servicio
+                                    </h3>
+                                    <h5>Completa toda la informacion necesaria para adquirir el servicio</h5>
+                                </div>
+                                <div class="wizard-navigation">
+                                    <ul>
+                                        <li><a href="#datos" data-toggle="tab">Datos Personales</a></li>
+                                        <li><a href="#busqueda" data-toggle="tab">Datos de Busqueda</a></li>
+                                        <li><a href="#salud" data-toggle="tab">Datos de Salud Basicos</a></li>
+                                        <li><a href="#salud2" data-toggle="tab">Datos de Salud</a></li>
+                                        <li><a href="#servicio" data-toggle="tab">Servicio a Contratar</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="tab-content">
+                                    <div class="tab-pane" id="datos">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <h4 class="info-text"><strong>Datos Personales del Cliente</strong></h4>
+                                            </div>
+                                            <div class="col-sm-5 col-sm-offset-1">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Cedula</label>
+                                                    {{form.cedula}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Edad</label>
+                                                    {{form.edad}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5 col-sm-offset-1">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Fecha de Nacimiento</label>
+                                                    {{form.fecha_n}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Telefono de Oficina</label>
+                                                    <div class="input-group">
+                                                        {{form.telefono_o}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group label-floating">
+                                                    
+                                                    <div class="input-group">
+                                                  
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">R.I.F.</label>
+                                                    <div class="input-group">
+                                                        {{form.rif}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="busqueda">
+                                        <h4 class="info-text"><strong>Especifica tu Direccion de Habitacion</strong></h4>
+                                        <div class="row">
+                                            <div class="col-sm-10 col-sm-offset-1">
+                                                <div class="col-sm-4">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Estado</label>
+                                                        {{form.estado}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Municipio</label>
+                                                        {{form.municipio}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Parroquia</label>
+                                                        {{form.parroquia}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Sector</label>
+                                                        {{form.sector}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Nombre del Sector</label>
+                                                        {{form.nombre_sector}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Ubicacion</label>
+                                                        {{form.ubicacion}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Nombre de la Ubicacion</label>
+                                                        {{form.nombre_ubicacion}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Vivienda</label>
+                                                        {{form.vivienda}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Nombre de la Vivienda</label>
+                                                        {{form.nombre_vivienda}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Piso</label>
+                                                        {{form.piso}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Numero</label>
+                                                        {{form.numero}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Punto de Referencia</label>
+                                                        {{form.punto_referencia}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="salud">
+                                        <h4 class="info-text"><strong>Describenos tus Datos de Salud.</strong></h4>
+                                        <div class="row">
+                                            <div class="col-sm-10 col-sm-offset-1">
+                                                <div class="col-sm-4">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Estado de Salud</label>
+                                                        {{form.salud}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Peso</label>
+                                                        {{form.peso}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Estatura</label>
+                                                        {{form.estatura}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <div class="form-group label-floating">
+                                                        <br><br><h4><strong>Indique si padece de:</strong></h4>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">¿Enfermedades del Corazon?</label>
+                                                        {{form.enfermedad_corazon}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">¿Diabetes?</label>
+                                                        {{form.diabetes}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">¿Cancer?</label>
+                                                        {{form.cancer}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">¿Presion Arterial?</label>
+                                                        {{form.presion_arterial}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">¿Enfermedades Renales?</label>
+                                                        {{form.enfermedad_renal}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">¿Enfermedades Mentales?</label>
+                                                        {{form.enfermendad_mental}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">¿Otras enfermedades Importantes?</label>
+                                                        {{form.enfermedades_importantes}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="salud2">
+                                        <h4 class="info-text"><strong>Describenos tus Datos de Salud.</strong></h4>
+                                        <div class="row">
+                                            <div class="col-sm-10 col-sm-offset-1">
+                                                <div class="col-sm-12">
+                                                    <div class="form-group label-floating">
+                                                        <br><br><h4><strong>Padece de alguna de estas enfermedades:</strong></h4>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Esfermedades Respiratorias</label>
+                                                        {{form.enfermedad_respiratoria}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Describa la enfermedad Respiratoria</label>
+                                                        {{form.indique_respiratoria}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Enfermedades Digestivas</label>
+                                                        {{form.enfermedad_digestivo}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Describa la enfermedad Digestiva</label>
+                                                        {{form.indique_digestivo}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Enfermedades Circulatorias</label>
+                                                        {{form.enfermedad_circulatorio}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Describa la enfermedad Circulatoria</label>
+                                                        {{form.indique_circulatorio}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Otras Enfermedades</label>
+                                                        {{form.otras_enfermedades}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Describa las otras enfermedades</label>
+                                                        {{form.indique_otras}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="servicio">
+                                        <div class="row">
+                                            <h4 class="info-text"><strong>Selecciona el Servicio que Deseas Contratar</strong></h4>
+                                            <div class="col-sm-8 col-sm-offset-1">
+                                                <div class="form-group label-floating">
+                                                  {{form.servicio}}  
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="wizard-footer">
+                                    <div class="pull-right">
+                                        <input type='button' class='btn btn-next btn-fill btn-info btn-wd' name='next' value='Siguiente' />
+                                        <input type='submit' class='btn btn-finish btn-fill btn-info btn-wd' name='finish' value='Contratar' />
+                                    </div>
+                                    <div class="pull-left">
+                                        <input type='button' class='btn btn-previous btn-fill btn-default btn-wd' name='previous' value='Atras' />
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </form>
+                        </div>
+                    </div> <!-- wizard container -->
+                </div>
+            </div> <!-- row -->
+        </div> <!--  big container -->
+
+        <div class="footer">
+            <div class="container text-center">
+                 Desarrollado por <a href="http://www.creative-tim.com">Expertos en Marketing Online</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+    <!--   Core JS Files   -->
+    <script src="{% static 'templates/assets/js/jquery-2.2.4.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'templates/assets/js/bootstrap.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'templates/assets/js/jquery.bootstrap.js' %}" type="text/javascript"></script>
+
+    <!--  Plugin for the Wizard -->
+    <script src="{% static 'templates/assets/js/material-bootstrap-wizard.js' %}"></script>
+
+    <!--  More information about jquery.validate here: http://jqueryvalidation.org/  -->
+    <script src="{% static 'templates/assets/js/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'templates/assets/js/bootstrap-datepicker.js' %}"></script>
+    <script src="{% static 'templates/assets/js/material-kit.js' %}"></script>
+</html>
+
+<a href=""></a>
