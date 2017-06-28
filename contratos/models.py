@@ -79,7 +79,6 @@ class Contratado(models.Model):
 	nombre_vivienda = models.CharField(max_length=100, blank=True, verbose_name='Nombre de la Vivienda')
 	piso = models.CharField(max_length=10, blank=True)
 	numero = models.IntegerField(null=True, blank=True)
-	domicilio_laboral = models.CharField(max_length=200, blank=True)
 	punto_referencia = models.CharField(max_length=250, verbose_name='Punto de Referencia de busqueda')
 	servicio = models.ForeignKey(Servicios, null=True, verbose_name='Servicio a Contratar')
 	cancer = models.CharField(max_length=2, choices=Opciones, blank=True, verbose_name='Cancer')

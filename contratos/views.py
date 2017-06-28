@@ -6,6 +6,7 @@ from administracion.models import Servicios
 from forms import ContratosForm
 from django.views.generic.edit import FormView
 from clientes.models import Potenciales
+from django.shortcuts import redirect
 
 
 class ContratoClientesView(LoginRequiredMixin, FormView):
@@ -18,7 +19,7 @@ class ContratoClientesView(LoginRequiredMixin, FormView):
 			'municipio', 'parroquia', 'sector', 
 			'nombre_sector', 'ubicacion', 'nombre_ubicacion', 
 			'vivienda', 'nombre_vivienda', 'piso', 
-			'numero', 'domicilio_laboral',
+			'numero', 
 			'punto_referencia', 'servicio', 'cancer', 
 			'diabetes', 'enfermedad_corazon', 'presion_arterial', 
 			'enfermedad_renal', 'enfermendad_mental', 'enfermedades_importantes',
@@ -34,6 +35,7 @@ class ContratoClientesView(LoginRequiredMixin, FormView):
 	        instance.cliente = cliente_potencial
 	        instance.save()
 	        form.save()
+	        return redirect('/accounts/profile/')
 
 	    return super(ContratoClientesView, self).post(form)
 

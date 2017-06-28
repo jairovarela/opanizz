@@ -38,7 +38,7 @@ class CustomMenu(Menu):
                 children=[
                     items.MenuItem('Clientes Potenciales', '/admin/clientes/potenciales/'),
                     items.MenuItem('Actividades de Clientes', '/admin/clientes/actividad/'),
-                    items.MenuItem('Contratos', '/admin/contratos/',
+                    items.MenuItem('Contratos', '/admin/contratos/contratado/',
                         children=[
                             items.MenuItem('Contratar Cliente', '/admin/contratos/contratado/add/'),
                             items.MenuItem('Beneficiarios', '/admin/contratos/beneficiario/'),

@@ -41,7 +41,6 @@ class ContratosForm(ModelForm):
 			'nombre_vivienda',
 			'piso',
 			'numero',
-			'domicilio_laboral',
 			'punto_referencia',
 			'servicio',
 			'cancer', 
