@@ -25,12 +25,12 @@ def handler404(request):
     response.status_code = 404
     return response
 
-def contrato(request):
-    form = ContratosForm(request.POST or None)
-    if form.is_valid():
-        instance = form.save(commit=False)
-        instance.save()
-    return render(request, "clientes/contrato.html", {"form":form})
+#def contrato(request):
+#    form = ContratosForm(request.POST or None)
+#    if form.is_valid():
+#        instance = form.save(commit=False)
+#        instance.save()
+#    return render(request, "clientes/contrato.html", {"form":form})
 
 def contratados(request):
     return render(request, "clientes/contrato_hecho.html", {})
