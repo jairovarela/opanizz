@@ -6,6 +6,7 @@ class Servicios(models.Model):
 	nombre = models.CharField(max_length=20, verbose_name='Nombre')
 	descripcion = models.CharField(max_length=200, blank=True, verbose_name='Descripcion del Servicio')
 	precio = models.IntegerField(null=True)
+	duracion = models.CharField(max_length=20, blank=True, null=True, verbose_name='Tiempo del contrato')
 	contrato = models.BooleanField(default=False, verbose_name='Contrato', help_text='Marque si el el servicio lleva contrato')
 
 

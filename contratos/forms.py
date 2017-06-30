@@ -54,11 +54,8 @@ class ContratosForm(ModelForm):
 			'peso',
 			'estatura', 
 			'enfermedad_respiratoria', 
-			
 			'enfermedad_digestivo', 
-			
 			'enfermedad_circulatorio', 
-			
 			'otras_enfermedades',
 			
 		]
@@ -91,13 +88,9 @@ class ContratosForm(ModelForm):
 			'peso': TextInput(attrs={'class':'form-control'}),
 			'estatura': TextInput(attrs={'class':'form-control'}),
 			'enfermedad_respiratoria': Select2Widget(attrs={'class':'django-seles2 form-control'}),
-			
 			'enfermedad_digestivo': Select2Widget(attrs={'class':'django-seles2 form-control'}),
-			
 			'enfermedad_circulatorio': Select2Widget(attrs={'class':'django-seles2 form-control'}),
-			
 			'otras_enfermedades': Select2Widget(attrs={'class':'django-seles2 form-control'}),
-			
 			'servicio': Select2Widget(attrs={'class':'django-seles2 form-control'}),
 		}
 

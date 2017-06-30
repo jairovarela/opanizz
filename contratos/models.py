@@ -18,7 +18,6 @@ Respiratorio = (
 				('Bronquitis', 'Bronquitis Cronica'),
 				('Tuberculosis', 'Tuberculosis'),
 				('Asma', 'Asma'),
-				('Otras', 'Otras'),
 				('Ninguna', 'Ninguna')
 				)
 
@@ -27,7 +26,6 @@ Circulatorio = (
 				('Alteraciones cardiacas','Alteraciones cardiacas'),
 				('Angina de pecho','Angina de pecho '),
 				('Infarto de miocardio','Infarto de miocardio'),
-				('Otras enfermedades relacionados','Otras enfermedades relacionados:'),
 				('Ninguna', 'Ninguna')
 				)
 
@@ -36,7 +34,6 @@ Digestivo = (
 			('Ulcera gastroduodenal','Ulcera gastroduodenal'),
 			('Dispepcia','Dispepcia'),
 			('Gastritis','Gastritis'),
-			('Otras enfermedades','Otras enfermedades'),
 			('Ninguna', 'Ninguna')
 			)
 
@@ -105,7 +102,7 @@ class Contratado(models.Model):
 		verbose_name_plural = 'Contratos Generados'
 
 	def __unicode__(self):
-		return str(self.cliente)
+		return '%s - %s' % (self.cliente, self.numcontrato)
 
 class Beneficiario(models.Model):
 	contratado = models.ForeignKey(Contratado, null = True)

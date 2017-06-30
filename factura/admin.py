@@ -30,7 +30,7 @@ class FacturaAdmin(admin.ModelAdmin):
 			datos = Contratado.objects.get(cliente = obj.fac_client_id)
 			obj.fac_name = str(datos.cliente)
 			obj.fac_rif = datos.cedula
-			obj.dir_fac = datos.direccion
+			obj.dir_fac = datos.punto_referencia
 			obj.fac_tlf = datos.telefono_h
 			obj.save()
 		else:
