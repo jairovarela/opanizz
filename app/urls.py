@@ -17,21 +17,38 @@ from django.conf.urls import include, url
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from clientes.views import ClienteServiciosView, DatosClientesView, DatosClientesUpdate, IniciarSesion
+from contratos.models import Contratado
+from clientes.views import Dashboard, ClienteServiciosView, ContratoPDFView, ClienteContratosView, DatosClientesView, DatosClientesUpdate, IniciarSesion
 from clientes import views
+from factura.views import FacturasContrato
 from contratos.views import ContratoClientesView
+from django.views.generic import ListView, DetailView
+from wkhtmltopdf.views import PDFTemplateView
+from registration.backends.default import urls
+
 
 urlpatterns = [
-    url(r'^$', views.inicio, name = 'inicio'),
-    url(r'^admin/', admin.site.urls),
-    url(r'^accounts/', include('registration.backends.default.urls')),
+    url(r'^$', views.index, name='index'),
     url(r'^admin_tools/', include('admin_tools.urls')),
+    url(r'^accounts/', include('registration.backends.default.urls')),
+    url(r'^admin/', admin.site.urls),
+    url(r'^accounts/dashboard/$', Dashboard.as_view(), name='dashboard'),
     url(r'^accounts/servicios/$', ClienteServiciosView.as_view(), name='clientes_servicios'),
-    url(r'^accounts/profile/$', IniciarSesion.as_view(), name='perfil'),
-    url(r'^accounts/user/update/$', DatosClientesUpdate.as_view(), name='usuario'),
-    url(r'^accounts/datos/$', DatosClientesView.as_view(), name='datos'),
-    url(r'^accounts/contratos/$', ContratoClientesView.as_view(), name='contrato'),
-    url(r'^accounts/contratados/$', views.contratados, name='contratados'),
+    url(r'^accounts/profile/$', DatosClientesView.as_view(), name='datos'),
+    url(r'^accounts/profile/update/$', DatosClientesUpdate.as_view(), name='perfil'),
+    url(r'^accounts/contrato/$', ContratoClientesView.as_view(), name='contrato'),
+    url(r'^accounts/contratos/$', ClienteContratosView.as_view(), name='contratos'),
+    url(r'^accounts/contratos/pdf/$', ContratoPDFView.as_view(template_name='clientes/contrato_ambulancias.html',
+                                             filename='Contrato OPA.pdf'), name='pdf'),
+    #url(r'^accounts/contratos/pdf/(?P<pk>\d+)/$', ContratoPDFView.as_view(), name='pdf'),
+    url(r'^accounts/facturas/$', FacturasContrato.as_view(), name='facturas'),
+    url(r'^accounts/contacto/$', views.contacto, name='contacto'),
+    url(r'^accounts/beneficiarios/$', views.beneficiarios, name='beneficiarios'),
+    url (r'^accounts/contratos/(?P<pk>\d+)$', DetailView.as_view(model=Contratado,
+    template_name='clientes/contrato_detalle'), name="contrato_detalle"),
+
+    # ...
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

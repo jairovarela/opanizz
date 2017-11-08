@@ -16,7 +16,7 @@ class MediosActividad(models.Model):
 	medio_actividad = models.CharField(max_length=200)
 
 	class Meta:
-		verbose_name = 'Medio de contacto para Actividad'
+		verbose_name = 'Medio de Contacto para Actividad'
 		verbose_name_plural = 'Medios de Contacto para Actividades'
 
 	def __unicode__(self):

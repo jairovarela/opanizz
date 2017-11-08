@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
@@ -25,24 +24,22 @@ SECRET_KEY = '1*%ml73+*b79x%&5blr5x&jsz92qj9y^$1eq(&x@&9un+k*h2^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'django_select2',
+    'django_extensions',
     'admin_tools',
     'admin_tools.theming',
     'admin_tools.menu',
-    #'suit',
     'admin_tools.dashboard',
-    #
-    # 
     'django.contrib.admin',
+    'django.contrib.sites',
     'registration',
     'django.contrib.auth',
-    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -52,9 +49,10 @@ INSTALLED_APPS = [
     'contratos',
     'generalidades',
     'factura',
+    'wkhtmltopdf'
 ]
 
-SITE_ID = 1
+SITE_ID = 5
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -71,7 +69,7 @@ ROOT_URLCONF = 'app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),os.path.join(BASE_DIR, 'templates/registration')],
         #'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -141,24 +139,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 
-#SUIT_CONFIG = {
-#    'ADMIN_NAME': 'Administracion de Contratos Opaniz C.A.',
-#    'HEADER_DATE_FORMAT': 'l, j. F Y',
-#    'CONFIRM_UNSAVED_CHANGES': True,
-#    'MENU_ORDER': (
-#        ("clientes", ("Potenciales", "Actividad")),
-#        ("contratos",("Contratado", "Beneficiario")),
-#        ("generalidades",("MedioContacto", "MediosActividad", "ZonasValencia")),
-#       ),
-#
-#    'MENU_ICONS': {
-#        'sites': 'icon-leaf',
-#        'auth': 'icon-lock',
-#        'clientes': 'icon-user',
-#        'contratos': 'icon-folder-close',
-#        'generalidades': 'icon-cog',
-#0    }
-#}
 MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static_pro", "static")]
@@ -175,6 +155,23 @@ CACHE_BACKEND = 'select2'
 
 ADMIN_TOOLS_MENU = 'menu.CustomMenu'
 ADMIN_TOOLS_THEMING_CSS = 'admin_tools/css/theming.css'
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+REGISTRATION_OPEN = True                # If True, users can register
+ACCOUNT_ACTIVATION_DAYS = 7     # One-week activation window; you may, of course, use a different value.
+REGISTRATION_AUTO_LOGIN = True  # If True, the user will be automatically logged in.
+LOGIN_REDIRECT_URL = '/accounts/dashboard/'  # The page you want users to arrive at after they successful log in
+LOGIN_URL = '/accounts/login/'  # The page users are directed to if they are not logged in,
 
-ACCOUNT_ACTIVATION_DAYS = 7
-REGISTRATION_AUTO_LOGIN = True
+
+
+#  and are trying to access pages requiring authentication
+EMAIL_HOST = 'localhost'
+DEFAULT_FROM_EMAIL = 'webmaster@localhost'
+ACTIVATION_EMAIL_SUBJECT = [os.path.join(BASE_DIR, '/templates/registration/activation_email_subject.txt')]
+ACTIVATION_EMAIL_BODY = [os.path.join(BASE_DIR, '/templates/registration/activation_email.txt')]
+ACTIVATION_EMAIL_HTML = [os.path.join(BASE_DIR, '/templates/registration/activation_complete.html')]
+
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}

@@ -1,4 +1,3 @@
-from django import forms 
 from django.forms import ModelForm, CheckboxInput
 from models import Potenciales, Actividad
 from django import forms
@@ -6,7 +5,9 @@ from django.forms import ModelForm, Textarea
 from django.forms.widgets import CheckboxInput, TextInput, NumberInput
 from django_select2.forms import Select2Widget
 from suit.widgets import SuitDateWidget, AutosizedTextarea, SuitTimeWidget, SuitSplitDateTimeWidget
-# FORMULARIOS MODIFICADOS DE LOS MODELOS 
+from django.contrib.auth.models import User
+
+# FORMULARIOS MODIFICADOS DE LOS MODELOS
 
 class ActividadSelect2WidgetForm(forms.ModelForm):
 	class Meta:
@@ -70,5 +71,3 @@ class PotencialesUpdateForm(ModelForm):
 			'nombre': TextInput(attrs={'class':'form-control', 'required':'True'}),
 			'apellido': TextInput(attrs={'class':'form-control', 'required':'True'}),
 		}
-		
-

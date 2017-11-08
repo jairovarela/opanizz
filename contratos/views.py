@@ -6,36 +6,46 @@ from administracion.models import Servicios
 from forms import ContratosForm
 from django.views.generic.edit import FormView
 from clientes.models import Potenciales
+from clientes.views import ClienteContratosView
+from factura.models import Facturas
 from django.shortcuts import redirect
-
+from reportlab.pdfgen import canvas
+from django.http import HttpResponse
 
 class ContratoClientesView(LoginRequiredMixin, FormView):
-    template_name = 'clientes/contrato.html'
-    form_class = ContratosForm
-    success_url = '/accounts/profile/'
-    fields =[
-			'cedula', 'edad', 'fecha_n', 
-			'rif', 'telefono_o','estado', 
-			'municipio', 'parroquia', 'sector', 
-			'nombre_sector', 'ubicacion', 'nombre_ubicacion', 
-			'vivienda', 'nombre_vivienda', 'piso', 
-			'numero', 
-			'punto_referencia', 'servicio', 'cancer', 
-			'diabetes', 'enfermedad_corazon', 'presion_arterial', 
-			'enfermedad_renal', 'enfermendad_mental', 'enfermedades_importantes',
-			'salud', 'peso', 'estatura', 'enfermedad_respiratoria', 
-			'enfermedad_digestivo',
-			'enfermedad_circulatorio', 'otras_enfermedades',]
-    
-    def post(self, request, *args, **kwargs):
-	    form = ContratosForm(request.POST or None)
-	    if form.is_valid():
-	        instance = form.save(commit=False)
-	        cliente_potencial = get_object_or_404(Potenciales, usuario=request.user)
-	        instance.cliente = cliente_potencial
-	        instance.save()
-	        form.save()
-	        return redirect('/accounts/profile/')
+	template_name = 'clientes/contrato.html'
+	form_class = ContratosForm
+	fields =[
+		'cedula', 'edad', 'fecha_n',
+		'rif', 'telefono_o','estado',
+		'municipio', 'parroquia', 'sector',
+		'nombre_sector', 'ubicacion', 'nombre_ubicacion',
+		'vivienda', 'nombre_vivienda', 'piso',
+		'numero',
+		'punto_referencia', 'servicio', 'cancer',
+		'diabetes', 'enfermedad_corazon', 'presion_arterial',
+		'enfermedad_renal', 'enfermendad_mental', 'enfermedades_importantes',
+		'salud', 'peso', 'estatura', 'enfermedad_respiratoria',
+		'enfermedad_digestivo',
+		'enfermedad_circulatorio', 'otras_enfermedades',]
 
-	    return super(ContratoClientesView, self).post(form)
+	def save(self, *args, **kwargs):
+		Facturas.objects.create(
+			something=kwargs['something'])
+		#YetAnotherModel.objects.create(
+			#something_else=kwargs['something_else']
+		#)
+		super(self).save(*args, **kwargs)
+
+	def post(self, request, *args, **kwargs):
+		form = ContratosForm(request.POST)
+		if form.is_valid():
+			instance = form.save(commit=False)
+			cliente = get_object_or_404(Potenciales, user=request.user.id)
+			instance.cliente = cliente
+			instance.save()
+			#form.save()
+			#return redirect('/accounts/contratos/')
+                return render(request, ClienteContratosView.template_name)
+		#return super(ContratoClientesView, self).post(form)
 

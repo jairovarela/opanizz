@@ -20,55 +20,54 @@ class CustomMenu(Menu):
         Menu.__init__(self, **kwargs)
         self.children += [
             items.MenuItem(_('Inicio'), reverse('admin:index')),
-#            items.AppList(
-#                _('Applications'),
-#                exclude=('django.contrib.*',)
-#            ),
+            #            items.AppList(
+            #                _('Applications'),
+            #                exclude=('django.contrib.*',)
+            #            ),
             items.MenuItem('Administracion', '/admin/administracion/',
-                children=[
-                    items.MenuItem('Servicios', '/admin/administracion/servicios/'),
-                    items.MenuItem('Facturas', '/admin/factura/',
-                        children=[
-                            items.MenuItem('Crear Factura', '/admin/factura/factura/add/'),
-                        ]
-                    ),
-                ]
-            ),
+                           children=[
+                               items.MenuItem('Servicios', '/admin/administracion/servicios/'),
+                           ]
+                           ),
             items.MenuItem('Clientes', '/admin/clientes/',
-                children=[
-                    items.MenuItem('Clientes Potenciales', '/admin/clientes/potenciales/'),
-                    items.MenuItem('Actividades de Clientes', '/admin/clientes/actividad/'),
-                    items.MenuItem('Contratos', '/admin/contratos/contratado/',
-                        children=[
-                            items.MenuItem('Contratar Cliente', '/admin/contratos/contratado/add/'),
-                            items.MenuItem('Beneficiarios', '/admin/contratos/beneficiario/'),
-                        ]
-                    ),
-                ]
-            ),
+                           children=[
+                               items.MenuItem('Clientes Potenciales', '/admin/clientes/potenciales/'),
+                               items.MenuItem('Actividades de Clientes', '/admin/clientes/actividad/'),
+                           ]
+                           ),
+            items.MenuItem('Facturas', '/admin/factura/',
+                           children=[
+                               items.MenuItem('Crear Factura', '/admin/factura/facturas/add/'),
+                           ]
+                           ),
+            items.MenuItem('Contratos', '/admin/contratos/',
+                           children=[
+                               items.MenuItem('Agregar Contrato a Cliente', '/admin/contratos/contratado/add/'),
+                           ]
+                           ),
             items.MenuItem('Generalidades', '/admin/generalidades/',
-                children=[
-                    items.MenuItem('Estados', '/admin/generalidades/estado/',),
-                    items.MenuItem('Municipios', '/admin/generalidades/municipio/',),
-                    items.MenuItem('Parroquias', '/admin/generalidades/parroquia/',),
-                    items.MenuItem('Sectores', '/admin/generalidades/sector/',
-                        children=[
-                            items.MenuItem('Agregar Sector', '/admin/generalidades/sector/add/'),
-                            items.MenuItem('Ubicaciones', '/admin/generalidades/ubicacion/'),
-                            items.MenuItem('Viviendas', '/admin/generalidades/vivienda/',
-                                children=[
-                                    items.MenuItem('Agregar Vivienda', '/admin/generalidades/vivienda/add/'),
-                                ]
+                           children=[
+                               items.MenuItem('Estados', '/admin/generalidades/estado/',),
+                               items.MenuItem('Municipios', '/admin/generalidades/municipio/',),
+                               items.MenuItem('Parroquias', '/admin/generalidades/parroquia/',),
+                               items.MenuItem('Sectores', '/admin/generalidades/sector/',
+                                              children=[
+                                                  items.MenuItem('Agregar Sector', '/admin/generalidades/sector/add/'),
+                                                  items.MenuItem('Ubicaciones', '/admin/generalidades/ubicacion/'),
+                                                  items.MenuItem('Viviendas', '/admin/generalidades/vivienda/',
+                                                                 children=[
+                                                                     items.MenuItem('Agregar Vivienda', '/admin/generalidades/vivienda/add/'),
+                                                                 ]
 
-                            )
-                        ]
-                    ),
-                    items.MenuItem('Zonas de Valencia', '/admin/generalidades/zonasvalencia/',),
-                    items.MenuItem('Medios de Contacto', '/admin/generalidades/mediocontacto/'),
-                    items.MenuItem('Medios de Contacto para Actividades', '/admin/generalidades/mediosactividad/'),
-                    items.MenuItem('Usuarios Activos', '/admin/registration/',),
-                ]
-            ),
+                                                                 )
+                                              ]
+                                              ),
+                               items.MenuItem('Zonas de Valencia', '/admin/generalidades/zonasvalencia/',),
+                               items.MenuItem('Medios de Contacto', '/admin/generalidades/mediocontacto/'),
+                               items.MenuItem('Medios de Contacto para Actividades', '/admin/generalidades/mediosactividad/'),
+                               items.MenuItem('Usuarios Activos', '/admin/registration/',),
+                           ]
+                           ),
             items.AppList(
                 _('Accesos y Permisos'),
                 models=('django.contrib.*',)

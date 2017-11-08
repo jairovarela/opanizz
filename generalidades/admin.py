@@ -5,6 +5,8 @@ from django_select2.forms import Select2Widget
 from suit.widgets import SuitDateWidget, AutosizedTextarea, SuitTimeWidget, SuitSplitDateTimeWidget
 from models import MedioContacto, MediosActividad, ZonasValencia, Estado, Municipio, Parroquia,	Sector, Vivienda, Ubicacion
 
+# Register your models here.
+
 class MunicipioAdmin(admin.ModelAdmin):
 	list_display = ['estado', 'municipio']
 	search_fields = ['municipio', 'estado__estado']
@@ -19,4 +21,4 @@ admin.site.register(Sector)
 admin.site.register(Vivienda)
 admin.site.register(Ubicacion)
 
-# Register your models here.
+

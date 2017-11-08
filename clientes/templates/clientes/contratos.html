@@ -1,0 +1,52 @@
+{% extends "clientes/base_clientes.html" %}
+{% load static %}
+{% block contenido %}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" data-background-color="blue">
+                        <h5 class="title">Revision de Contratos</h5>
+                        <p> Informacion de tus contratos, fechas de inicio y fin. Además, descarga el PDF.  </p>
+                    </div>
+                    <div class="card-content table-responsive">
+                        {% if contratos.count == 0 %}
+                        <span>Usted no tiene contratos aun! Haga click <a href="{% url 'servicios' %}">aqui</a> para contratar uno.</span>
+                        {% else %}
+                        <table class="table">
+                            <thead class="text-info">
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Fecha de Contratación</th>
+                            <th>Fecha de Vencimiento</th>
+                            <th>Cantidad de Beneficiarios</th>
+                            <th>Monto Total</th>
+                            <th>Acción</th>
+                            </thead>
+                            {% for contrato in contratos %}
+                            <tbody>
+                            <tr>
+                                <td><strong>{{contrato.numcontrato}}</strong></td>
+                                <td>{{contrato.cliente}}</td>
+                                <td>{{contrato.fecha_contratacion}} </td>
+                                <td>{{contrato.fecha_expiracion}}</td>
+                                <td>{{contrato.beneficiario_id}}</td>
+                                <td>{{contrato.precio_total}} Bsf</td>
+                                <td>
+                                    <a href=" {% url 'pdf' %}"><button class="btn btn-success">Descargar</button></a>
+                                    <a href="{% url 'contrato_detalle' '3' %}"> <button class="btn btn-default">Ver</button></a>
+                                    <button class="btn btn-danger">Eliminar</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                            {% endfor %}
+                            {% endif %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

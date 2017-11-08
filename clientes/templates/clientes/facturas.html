@@ -1,0 +1,75 @@
+{% extends "clientes/base_clientes.html" %}
+{% load static %}
+{% block contenido %}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" data-background-color="blue">
+                        <h4 class="title">Facturas</h4>
+                        <p class="category"> </p>
+                    </div>
+                    <div class="card-content">
+                        <form action="" method="post">{% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label"></label>
+                                        {{form.numfactura}}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Apellido</label>
+                                        {{form.apellido}}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Celular</label>
+                                        {{form.celular}}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Telefono de Habitacion</label>
+                                        {{form.telefono_h}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Estado</label>
+                                        {{form.estado}}
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Municipio</label>
+                                        {{form.municipio}}
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Parroquia</label>
+                                        {{form.parroquia}}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-info pull-right">Actualizar Perfil</button>
+                            <input type='submit' class='btn btn-finish btn-fill btn-info btn-wd' name='finish' value='Finish' />
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,4 +1,3 @@
-from django import forms 
 from django.forms import ModelForm, CheckboxInput
 from models import Contratado, Beneficiario
 from django import forms
@@ -7,8 +6,6 @@ from django.forms.widgets import CheckboxInput, TextInput, NumberInput, SelectDa
 from django.contrib.admin.widgets import AdminDateWidget
 from django_select2.forms import Select2Widget
 from suit.widgets import SuitDateWidget, AutosizedTextarea, SuitTimeWidget, SuitSplitDateTimeWidget
-from betterforms.multiform import MultiModelForm
-
 
 
 class BeneficiarioForm(forms.ModelForm):
@@ -25,6 +22,7 @@ class ContratosForm(ModelForm):
 	class Meta:
 		model = Contratado
 		fields =[
+		    'estatus',
 		    'cedula',
 			'edad',
 			'fecha_n',
@@ -43,6 +41,7 @@ class ContratosForm(ModelForm):
 			'numero',
 			'punto_referencia',
 			'servicio',
+			'precio_total',
 			'cancer', 
 			'diabetes',
 			'enfermedad_corazon',
@@ -60,7 +59,8 @@ class ContratosForm(ModelForm):
 			
 		]
 		widgets = {
-			'fecha_n': DateInput(attrs={'class':'form-control', 'placeholder':'dd/mm/aaaa'}),
+			'estatus': Select2Widget(attrs={'class':'django-seles2 form-control'}),
+			'fecha_n': DateInput(attrs={'class':'form-control'}),
 			'cedula': TextInput(attrs={'class':'form-control'}),
 			'edad': TextInput(attrs={'class':'form-control'}),
 			'telefono_o': TextInput(attrs={'class':'form-control'}),
@@ -92,6 +92,5 @@ class ContratosForm(ModelForm):
 			'enfermedad_circulatorio': Select2Widget(attrs={'class':'django-seles2 form-control'}),
 			'otras_enfermedades': Select2Widget(attrs={'class':'django-seles2 form-control'}),
 			'servicio': Select2Widget(attrs={'class':'django-seles2 form-control'}),
+			'precio_total': Select2Widget(attrs={'class': 'django-seles2 form-control'}),
 		}
-
-

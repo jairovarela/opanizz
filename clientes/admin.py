@@ -18,19 +18,17 @@ class ActividadAdmin(admin.ModelAdmin):
 	form = ActividadSelect2WidgetForm
 
 class PotencialesAdmin(admin.ModelAdmin):
-	list_display = ['nombre', 'apellido', 'celular','telefono_h', 'usuario']
-	search_fields = ['nombre', 'apellido']
+	list_display = ['user','nombre', 'apellido', 'celular','telefono_h']
+	search_fields = ['nombre', 'apellido', 'user']
 	fieldsets = [
-	(None, {'fields': [()]}),
-	('USUARIO DEL CLIENTE POTENCIAL', {'fields': ['usuario']}),
-	('DATOS DEL CLIENTE POTENCIAL', {'fields': [('nombre', 'apellido'), ('celular', 'telefono_h')]}),
-	('DATOS FAMILIARES', {'fields': [('personas', 'cantidad_p', 'adultos')]}),
-	('DATOS DE UBICACION', {'fields': [('estado','municipio','parroquia')]})
-				]
+		(None, {'fields': [()]}),
+		('USUARIO DEL CLIENTE POTENCIAL', {'fields': ['user']}),
+		('DATOS DEL CLIENTE POTENCIAL', {'fields': [('nombre', 'apellido'), ('celular', 'telefono_h')]}),
+		('DATOS FAMILIARES', {'fields': [('personas', 'cantidad_p', 'adultos')]}),
+		('DATOS DE UBICACION', {'fields': [('estado','municipio','parroquia')]})
+	]
 	form = PotencialesForm
 	inlines = [ActividadInline]
-
-
 
 admin.site.register(Potenciales, PotencialesAdmin)
 admin.site.register(Actividad)

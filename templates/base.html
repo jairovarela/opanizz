@@ -1,6 +1,6 @@
 <!DOCTYPE html>
+{% load i18n%}
 {% load static %}
-
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -12,25 +12,26 @@
     <link href="{% static 'templates/inicio/min/plugin-min.css' %}" type="text/css" rel="stylesheet">
     <link href="{% static 'templates/inicio/min/custom-min.css' %}" type="text/css" rel="stylesheet" >
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+
 </head>
 <body id="top" class="scrollspy">
 
 <!-- Pre Loader -->
 <div id="loader-wrapper">
     <div id="loader"></div>
- 
+
     <div class="loader-section section-left"></div>
     <div class="loader-section section-right"></div>
- 
+
 </div>
 
 <!--Navigation-->
- <div class="navbar-fixed">
+<div class="navbar-fixed">
     <nav id="nav_f" class="default_color" role="navigation">
         <div class="container">
             <div class="nav-wrapper">
-            <a href="#" id="logo-container" class="brand-logo">
-                <img src="{% static 'templates/inicio/img/opaniz.png' %}" height="60" width="220" href="/#intro" alt=""></a>
+                <a href="/" id="logo-container" class="brand-logo">
+                    <img src="{% static 'templates/inicio/img/opaniz.png' %}" height="60" width="220" href="/#intro" alt=""></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="/#intro">Servicios</a></li>
                     <li><a href="/#work">Especialidades</a></li>
@@ -45,22 +46,22 @@
                     <li><a href="/#contact">Contactanos</a></li>
                     <li><a href="/accounts/login">Acceder</a></li>
                 </ul>
-            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
             </div>
         </div>
     </nav>
 </div>
 
 {% block content %}
-    
+
 {% endblock %}
 <!--Footer-->
 <footer id="contact" class="page-footer default_color scrollspy">
-    <div class="container">  
+    <div class="container">
         <div class="row">
-        <h3 class="white-text">¿Alguna Inquietud?</h3>
+            <h3 class="white-text">¿Alguna Inquietud?</h3>
             <div class="col l6 s12">
-                <form class="col s12" action="" method="post">
+                <form class="col s12" action="" method="post">{% csrf_token %}
                     <div class="row">
                         <div class="input-field col s6">
                             <i class="mdi-action-account-circle prefix white-text"></i>
@@ -127,9 +128,9 @@
 </footer>
 
 
-    <!--  Scripts-->
-    <script src="{% static 'templates/inicio/min/plugin-min.js' %}"></script>
-    <script src="{% static 'templates/inicio/min/custom-min.js' %}"></script>
+<!--  Scripts-->
+<script src="{% static 'templates/inicio/min/plugin-min.js' %}"></script>
+<script src="{% static 'templates/inicio/min/custom-min.js' %}"></script>
 
-    </body>
+</body>
 </html>
