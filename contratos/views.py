@@ -9,7 +9,6 @@ from clientes.models import Potenciales
 from clientes.views import ClienteContratosView
 from factura.models import Facturas
 from django.shortcuts import redirect
-from reportlab.pdfgen import canvas
 from django.http import HttpResponse
 
 class ContratoClientesView(LoginRequiredMixin, FormView):
@@ -48,4 +47,3 @@ class ContratoClientesView(LoginRequiredMixin, FormView):
 			#return redirect('/accounts/contratos/')
                 return render(request, ClienteContratosView.template_name)
 		#return super(ContratoClientesView, self).post(form)
-
