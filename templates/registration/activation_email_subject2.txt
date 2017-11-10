@@ -1,1 +1,0 @@
-{% load i18n %}{% blocktrans "Activar tu cuenta en" %} {{ site.name }}

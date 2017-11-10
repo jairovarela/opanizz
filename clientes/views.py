@@ -18,7 +18,7 @@ from django.views.generic.list import ListView
 from wkhtmltopdf.views import PDFTemplateView
 
 def index(request):
-    return render(request, "index.html", {})
+    return render(request, "inicio.html", {})
 
 def handler404(request):
     response = render_to_response('404.html', {}, context_instance=RequestContext(request))

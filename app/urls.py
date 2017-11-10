@@ -29,9 +29,9 @@ from registration.backends.default import urls
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    url(r'^admin_tools/', include('admin_tools.urls')),
-    url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^accounts/', include('registration.backends.default.urls')),
+    url(r'^admin_tools/', include('admin_tools.urls')),
     url(r'^accounts/dashboard/$', Dashboard.as_view(), name='dashboard'),
     url(r'^accounts/servicios/$', ClienteServiciosView.as_view(), name='clientes_servicios'),
     url(r'^accounts/profile/$', DatosClientesView.as_view(), name='datos'),

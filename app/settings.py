@@ -24,12 +24,24 @@ SECRET_KEY = '1*%ml73+*b79x%&5blr5x&jsz92qj9y^$1eq(&x@&9un+k*h2^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+#DESARROLLO
 
+ALLOWED_HOSTS = ['127.0.0.1']
+
+#PRODUCCION
+
+#ALLOWED_HOSTS = ['administracion.opaniz.com']
 
 # Application definition
 
 INSTALLED_APPS = [
+
+    'administracion',
+    'clientes',
+    'contratos',
+    'generalidades',
+    'factura',
+    'wkhtmltopdf',
     'django_select2',
     'django_extensions',
     'admin_tools',
@@ -37,19 +49,14 @@ INSTALLED_APPS = [
     'admin_tools.menu',
     'admin_tools.dashboard',
     'django.contrib.admin',
-    'django.contrib.sites',
     'registration',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'administracion',
-    'clientes',
-    'contratos',
-    'generalidades',
-    'factura',
-    'wkhtmltopdf'
+
 ]
 
 SITE_ID = 5
@@ -69,7 +76,7 @@ ROOT_URLCONF = 'app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates'),os.path.join(BASE_DIR, 'templates/registration')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         #'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -156,20 +163,23 @@ CACHE_BACKEND = 'select2'
 ADMIN_TOOLS_MENU = 'menu.CustomMenu'
 ADMIN_TOOLS_THEMING_CSS = 'admin_tools/css/theming.css'
 #EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+#CONFIGURACION DE REGISTRATION-REDUX
+#ACTIVATION_EMAIL_SUBJECT = [os.path.join(BASE_DIR, '/templates/registration/activation_email_subject.txt')]
+#ACTIVATION_EMAIL_BODY = [os.path.join(BASE_DIR, '/templates/registration/activation_email.txt')]
+#ACTIVATION_EMAIL_HTML = [os.path.join(BASE_DIR, '/templates/registration/activation_complete.html')]
 REGISTRATION_OPEN = True                # If True, users can register
 ACCOUNT_ACTIVATION_DAYS = 7     # One-week activation window; you may, of course, use a different value.
-REGISTRATION_AUTO_LOGIN = True  # If True, the user will be automatically logged in.
-LOGIN_REDIRECT_URL = '/accounts/dashboard/'  # The page you want users to arrive at after they successful log in
+REGISTRATION_AUTO_LOGIN = False  # If True, the user will be automatically logged in.
+#LOGIN_REDIRECT_URL = '/accounts/dashboard/'  # The page you want users to arrive at after they successful log in
 LOGIN_URL = '/accounts/login/'  # The page users are directed to if they are not logged in,
-
-
-
 #  and are trying to access pages requiring authentication
 EMAIL_HOST = 'localhost'
-DEFAULT_FROM_EMAIL = 'webmaster@localhost'
-ACTIVATION_EMAIL_SUBJECT = [os.path.join(BASE_DIR, '/templates/registration/activation_email_subject.txt')]
-ACTIVATION_EMAIL_BODY = [os.path.join(BASE_DIR, '/templates/registration/activation_email.txt')]
-ACTIVATION_EMAIL_HTML = [os.path.join(BASE_DIR, '/templates/registration/activation_complete.html')]
+EMAIL_HOST_USER = None
+EMAIL_HOST_PASSWORD = None
+EMAIL_PORT = 1025
+#DEFAULT_FROM_EMAIL = 'webmaster@localhost'
+
 
 GRAPH_MODELS = {
   'all_applications': True,
