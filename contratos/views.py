@@ -8,6 +8,7 @@ from django.views.generic.edit import FormView
 from clientes.models import Potenciales
 from clientes.views import ClienteContratosView
 from factura.models import Facturas
+from wkhtmltopdf.views import PDFTemplateView
 from django.shortcuts import redirect
 from django.http import HttpResponse
 

@@ -62,10 +62,7 @@ class ContratoPDFView(LoginRequiredMixin, PDFTemplateView):
 
     #contrato = get_object_or_404(Contratado, id=pk)
     #contrato_cliente = Potenciales.objects.filter(contratado=contrato)
-    def get_context_data(self, **kwargs):
-        context = super(ContratoPDFView, self).get_context_data(**kwargs)
-        return context
-
+    
     def get(self, request, *args, **kwargs):
         cliente_user = cliente_user_contrato(request.user)
         cliente_contratado = Contratado.objects.filter(cliente_id=cliente_user).order_by("id")[:1].get()
