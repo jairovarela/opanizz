@@ -180,7 +180,7 @@ LOGIN_URL = '/accounts/login/'  # The page users are directed to if they are not
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.1and1.es'
 EMAIL_HOST_USER = 'no-reply@administracion.opaniz.com'
-EMAIL_HOST_PASSWORD = '1q2w3e4r'
+EMAIL_HOST_PASSWORD = '1q2w3e4r+'
 EMAIL_PORT = 587
 #DEFAULT_FROM_EMAIL = 'webmaster@localhost'
 
